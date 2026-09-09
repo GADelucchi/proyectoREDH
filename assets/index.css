@@ -1,0 +1,1497 @@
+/* ==========================================================================
+   Fundación REDH — hoja de estilos única
+   Orden: tokens · reset · utilidades · componentes · secciones · páginas
+   Los colores de marca están todos en :root; cambiarlos ahí repinta el sitio.
+   ========================================================================== */
+
+:root {
+  /* TODO: reemplazar por la paleta real de marca cuando el cliente la confirme */
+  --tinta: #17231f;
+  --tinta-suave: #46564f;
+  --tinta-tenue: #6d7b74;
+
+  --papel: #f8f6f1;
+  --papel-alt: #efebe1;
+  --papel-hondo: #e4ded0;
+
+  --verde: #12695c;
+  --verde-oscuro: #0c4a41;
+  --verde-claro: #2f9184;
+  --verde-lavado: #e3efec;
+
+  --ambar: #c2610a;
+  --ambar-oscuro: #9a4c06;
+
+  --linea: rgba(23, 35, 31, 0.14);
+  --linea-tenue: rgba(23, 35, 31, 0.07);
+
+  --radio: 14px;
+  --radio-chico: 8px;
+  --sombra: 0 1px 2px rgba(23, 35, 31, 0.05), 0 12px 28px -18px rgba(23, 35, 31, 0.35);
+  --sombra-alta: 0 2px 4px rgba(23, 35, 31, 0.06), 0 24px 48px -24px rgba(23, 35, 31, 0.4);
+
+  --ancho: 1180px;
+  --ancho-texto: 68ch;
+
+  /* alto real del header; lo actualiza assets/index.js */
+  --cabecera-h: 76px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* clip (y no hidden) corta el desborde horizontal sin romper el sticky */
+  overflow-x: clip;
+  /* el canvas arranca claro y termina oscuro: el rebote de iOS no deja
+     una franja clara debajo del footer */
+  background: linear-gradient(to bottom, var(--papel) 0 60%, var(--tinta) 60% 100%);
+}
+
+/* el scroll a un ancla no queda tapado por el header sticky */
+:target {
+  scroll-margin-top: calc(var(--cabecera-h) + 24px);
+}
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* bloqueo de scroll con el menú abierto: sólo en <html>, si se aplica también
+   al <body> éste pasa a ser contenedor de scroll y el header se despega */
+html.menu-abierto {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.1rem, 5.2vw, 3.5rem); }
+h2 { font-size: clamp(1.65rem, 3.4vw, 2.4rem); }
+h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
+h4 { font-size: 1.05rem; }
+
+p,
+li,
+dd,
+dt,
+span,
+a {
+  overflow-wrap: break-word;
+}
+
+p { text-wrap: pretty; }
+
+a { color: inherit; }
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol { list-style: none; }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* foco visible y consistente en todo el sitio (accesibilidad) */
+:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: clamp(1.15rem, 4vw, 2.5rem);
+}
+
+.contenedor--angosto {
+  max-width: 820px;
+}
+
+.seccion {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.seccion--ajustada {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.seccion--alt {
+  background: var(--papel-alt);
+}
+
+.seccion--verde {
+  background: var(--verde-lavado);
+}
+
+.oculto-visual {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saltar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 0.7rem 1.2rem;
+  border-radius: 0 0 var(--radio-chico) var(--radio-chico);
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+
+.saltar:focus {
+  transform: translate(-50%, 0);
+}
+
+.antetitulo {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 0.9rem;
+}
+
+.bajada {
+  max-width: var(--ancho-texto);
+  color: var(--tinta-suave);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+}
+
+.encabezado-seccion {
+  max-width: var(--ancho-texto);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.encabezado-seccion .bajada {
+  margin-top: 1rem;
+}
+
+h2 + .texto-largo,
+h3 + .texto-largo,
+h2 + .bajada,
+h1 + .bajada {
+  margin-top: 1.1rem;
+}
+
+.texto-largo > * + * {
+  margin-top: 1.1rem;
+}
+
+.texto-largo {
+  max-width: var(--ancho-texto);
+}
+
+.texto-largo h3 {
+  margin-top: 2.2rem;
+}
+
+.texto-largo ul {
+  list-style: disc;
+  padding-left: 1.3rem;
+  color: var(--tinta-suave);
+}
+
+.texto-largo li + li {
+  margin-top: 0.4rem;
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.78rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease, transform 0.18s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primario {
+  background: var(--verde);
+  color: #fff;
+}
+
+.btn--primario:hover { background: var(--verde-oscuro); }
+
+.btn--acento {
+  background: var(--ambar);
+  color: #fff;
+}
+
+.btn--acento:hover { background: var(--ambar-oscuro); }
+
+.btn--linea {
+  border-color: var(--linea);
+  background: transparent;
+  color: var(--tinta);
+}
+
+.btn--linea:hover {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+
+.btn--claro {
+  background: #fff;
+  color: var(--tinta);
+}
+
+.btn--fantasma-claro {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.btn--fantasma-claro:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn--bloque {
+  width: 100%;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--verde);
+  text-decoration: none;
+}
+
+.enlace-flecha::after {
+  content: "→";
+  transition: transform 0.18s ease;
+}
+
+.enlace-flecha:hover::after { transform: translateX(3px); }
+.enlace-flecha:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   Cabecera y navegación
+   ========================================================================== */
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+/* El fondo translúcido y el desenfoque van en un pseudoelemento, no en la
+   cabecera misma: backdrop-filter (como transform o filter) convierte al
+   elemento en bloque contenedor de sus descendientes position:fixed. Con el
+   desenfoque aplicado a .cabecera, el panel del menú móvil —que es fixed y va
+   dentro de la cabecera— se posicionaba contra la cabecera en lugar de contra
+   la ventana, y quedaba de 72 px de alto mostrando un solo enlace. */
+.cabecera::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(248, 246, 241, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.cabecera--fija {
+  box-shadow: 0 1px 0 var(--linea), 0 10px 24px -22px rgba(23, 35, 31, 0.6);
+}
+
+.cabecera__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 76px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.marca__logo {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.marca__texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.marca__nombre {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+}
+
+.marca__bajada {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+
+.nav__lista {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.nav__enlace {
+  display: block;
+  /* "Esto es REDH" y "Lo que nos mueve" se partían en tres líneas dentro de la
+     barra horizontal; el ancho real de la barra define el punto de corte a
+     menú hamburguesa (1080 px), así que no deben envolverse nunca */
+  white-space: nowrap;
+  padding: 0.5rem 0.62rem;
+  border-radius: var(--radio-chico);
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav__enlace:hover {
+  color: var(--tinta);
+  background: var(--papel-hondo);
+}
+
+/* la marca la pone assets/index.js comparando con la URL actual */
+.nav__enlace[aria-current="page"] {
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.cabecera__acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cabecera__acciones .btn {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.menu-boton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-chico);
+  cursor: pointer;
+}
+
+.menu-boton__barras,
+.menu-boton__barras::before,
+.menu-boton__barras::after {
+  display: block;
+  width: 19px;
+  height: 2px;
+  background: var(--tinta);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menu-boton__barras::before,
+.menu-boton__barras::after {
+  content: "";
+  position: absolute;
+}
+
+.menu-boton__barras::before { transform: translateY(-6px); }
+.menu-boton__barras::after { transform: translateY(6px); }
+
+.menu-boton[aria-expanded="true"] .menu-boton__barras {
+  background: transparent;
+}
+
+.menu-boton[aria-expanded="true"] .menu-boton__barras::before {
+  transform: rotate(45deg);
+}
+
+.menu-boton[aria-expanded="true"] .menu-boton__barras::after {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 1200px) {
+  .menu-boton {
+    display: inline-flex;
+    position: relative;
+  }
+
+  /* el CTA sigue visible en la cabecera: en un sitio que pide donaciones
+     conviene tenerlo siempre a mano. Sólo se oculta en pantallas muy angostas,
+     donde ya no entra al lado del logo. */
+
+  .nav {
+    position: fixed;
+    inset: var(--cabecera-h) 0 0 0;
+    background: var(--papel);
+    padding: 1.5rem clamp(1.15rem, 4vw, 2.5rem) 3rem;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+
+  .nav[data-abierto="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav__lista {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav__enlace {
+    padding: 0.95rem 0.25rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--linea-tenue);
+    border-radius: 0;
+  }
+
+  .nav__cta {
+    margin-top: 1.6rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1201px) {
+  .nav__cta { display: none; }
+
+  /* En la barra horizontal el logo ya es el enlace a Inicio; repetirlo cuesta
+     ~80 px que hacen falta para que las siete etiquetas entren sin recortarse.
+     En el panel móvil sí se muestra, porque ahí el logo queda fuera de la lista. */
+  .nav__lista .nav__inicio { display: none; }
+}
+
+@media (max-width: 460px) {
+  .cabecera__acciones .btn { display: none; }
+  .marca__bajada { display: none; }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(47, 145, 132, 0.14), transparent 55%),
+    var(--papel);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero__texto .bajada {
+  margin-top: 1.4rem;
+}
+
+.hero__datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.6rem 2rem;
+  margin-top: 2.6rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--linea);
+}
+
+.hero--interno {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+.hero--interno .bajada {
+  margin-top: 1.2rem;
+}
+
+.migas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--tinta-tenue);
+  margin-bottom: 1.2rem;
+}
+
+.migas a {
+  text-decoration: none;
+}
+
+.migas a:hover { text-decoration: underline; }
+
+.migas li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.4rem;
+  color: var(--linea);
+}
+
+@media (max-width: 860px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Figuras · placeholders de imagen
+   Mientras no haya fotos reales, .figura--ph dibuja un marco con textura.
+   Al reemplazarlo por <img>, se le deja sólo la clase .figura.
+   ========================================================================== */
+
+.figura {
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.figura--ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--papel-hondo) 0 12px,
+      var(--papel-alt) 12px 24px
+    );
+  border: 1px dashed var(--linea);
+  color: var(--tinta-tenue);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+}
+
+.figura--alta { aspect-ratio: 3 / 4; }
+.figura--ancha { aspect-ratio: 16 / 9; }
+.figura--cuadrada { aspect-ratio: 1 / 1; }
+
+/* ==========================================================================
+   Tarjetas
+   ========================================================================== */
+
+.grilla {
+  display: grid;
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.grilla--2 { grid-template-columns: repeat(2, 1fr); }
+.grilla--3 { grid-template-columns: repeat(3, 1fr); }
+.grilla--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+  .grilla--3,
+  .grilla--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .grilla--2,
+  .grilla--3,
+  .grilla--4 { grid-template-columns: 1fr; }
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #fff;
+  border: 1px solid var(--linea-tenue);
+  border-radius: var(--radio);
+  padding: clamp(1.3rem, 2.5vw, 1.8rem);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta--enlazada:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-alta);
+}
+
+.tarjeta p {
+  color: var(--tinta-suave);
+  font-size: 0.96rem;
+}
+
+.tarjeta__icono {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--verde-lavado);
+  color: var(--verde-oscuro);
+  margin-bottom: 0.3rem;
+}
+
+.tarjeta__icono svg {
+  width: 22px;
+  height: 22px;
+}
+
+.tarjeta__pie {
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.tarjeta--plana {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.tarjeta--destacada {
+  background: var(--verde);
+  color: #fff;
+  border-color: transparent;
+}
+
+.tarjeta--destacada p { color: rgba(255, 255, 255, 0.85); }
+.tarjeta--destacada .tarjeta__icono {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.etiqueta {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--verde-lavado);
+  color: var(--verde-oscuro);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Números de impacto
+   ========================================================================== */
+
+.dato__numero {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.dato__texto {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+  max-width: 22ch;
+}
+
+.franja-datos {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.franja-datos .dato__numero { color: #fff; }
+.franja-datos .dato__texto { color: rgba(248, 246, 241, 0.72); }
+
+/* ==========================================================================
+   Bloque texto + figura (se alterna con .bloque--invertido)
+   ========================================================================== */
+
+.bloque {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+/* Una pista 1fr no baja del min-content de su item, así que un <input> o un
+   correo largo empujan la columna más allá del contenedor y el overflow-x:clip
+   del body recorta lo que sobra en vez de mostrar una barra. min-width:0 deja
+   que la pista se encoja; el ancho real lo fijan los propios elementos. */
+.bloque > *,
+.grilla > * {
+  min-width: 0;
+}
+
+.bloque--invertido .bloque__figura { order: -1; }
+
+/* para bloques cuya segunda columna es un formulario alto: si se centran,
+   la columna de texto queda flotando en el medio */
+.bloque--arriba { align-items: start; }
+
+@media (max-width: 860px) {
+  .bloque { grid-template-columns: 1fr; }
+  .bloque--invertido .bloque__figura { order: 0; }
+}
+
+/* ==========================================================================
+   Franja de llamada a la acción
+   ========================================================================== */
+
+.cta {
+  background: var(--verde-oscuro);
+  color: #fff;
+}
+
+.cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cta h2 { max-width: 20ch; }
+
+.cta p {
+  margin-top: 0.9rem;
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.cta .acciones { margin-top: 0; }
+
+/* ==========================================================================
+   Línea de tiempo (historia)
+   ========================================================================== */
+
+.linea-tiempo {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--linea);
+}
+
+.hito + .hito { margin-top: 2.2rem; }
+
+.hito::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--verde);
+  border: 2px solid var(--papel);
+  margin-top: 0.45rem;
+}
+
+.hito__anio {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--verde);
+}
+
+.hito p {
+  margin-top: 0.35rem;
+  color: var(--tinta-suave);
+}
+
+/* ==========================================================================
+   Equipo
+   ========================================================================== */
+
+.persona__foto {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radio);
+  margin-bottom: 0.9rem;
+}
+
+.persona__nombre {
+  font-size: 1.05rem;
+  /* los nombres completos son largos: que corten con guion antes de desbordar */
+  hyphens: auto;
+}
+
+/* el apodo entre paréntesis, más liviano que el nombre */
+.persona__apodo {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.9em;
+  color: var(--tinta-tenue);
+  white-space: nowrap;
+}
+
+.persona__rol {
+  font-size: 0.88rem;
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.persona p {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--tinta-suave);
+}
+
+/* ==========================================================================
+   Aliados
+   ========================================================================== */
+
+.aliados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.aliado {
+  display: grid;
+  place-items: center;
+  min-width: 150px;
+  flex: 1 1 150px;
+  height: 84px;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px dashed var(--linea);
+  border-radius: var(--radio-chico);
+  color: var(--tinta-tenue);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Novedades
+   ========================================================================== */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.2rem;
+}
+
+.filtro {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filtro:hover { border-color: var(--verde); }
+
+.filtro[aria-pressed="true"] {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+.nota {
+  /* ancla para que el enlace del título cubra toda la tarjeta */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--linea-tenue);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nota:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-alta);
+}
+
+.nota__figura {
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+.nota__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.3rem;
+}
+
+.nota__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--tinta-tenue);
+}
+
+/* En móvil el título de la nota medía 20 px de alto: demasiado poco para el
+   dedo. Estirando el enlace sobre la tarjeta, el área de toque pasa a ser la
+   tarjeta entera y no hace falta anidar un <a> alrededor de todo (que rompería
+   la semántica del <article> y el orden de lectura). */
+.nota__titulo a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.nota__titulo {
+  font-size: 1.15rem;
+}
+
+.nota__titulo a {
+  text-decoration: none;
+}
+
+/* el link cubre toda la tarjeta sin anidar <a> dentro de <a> */
+.nota__titulo a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.nota { position: relative; }
+
+.nota p {
+  font-size: 0.94rem;
+  color: var(--tinta-suave);
+}
+
+/* artículo interno */
+.articulo {
+  max-width: var(--ancho-texto);
+  margin-inline: auto;
+}
+
+.articulo > * + * { margin-top: 1.2rem; }
+
+.articulo h2 { margin-top: 2.6rem; }
+.articulo h3 { margin-top: 2rem; }
+
+.articulo blockquote {
+  border-left: 3px solid var(--verde);
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--tinta);
+}
+
+.articulo figure { margin-block: 2rem; }
+
+.articulo figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--tinta-tenue);
+}
+
+.articulo ul {
+  list-style: disc;
+  padding-left: 1.3rem;
+  color: var(--tinta-suave);
+}
+
+/* ==========================================================================
+   Acordeón (preguntas frecuentes / transparencia)
+   ========================================================================== */
+
+.acordeon {
+  border-top: 1px solid var(--linea);
+  max-width: var(--ancho-texto);
+}
+
+.acordeon__item {
+  border-bottom: 1px solid var(--linea);
+}
+
+.acordeon__boton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.15rem 0;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.acordeon__boton::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--verde);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.acordeon__boton[aria-expanded="true"]::after {
+  transform: rotate(45deg);
+}
+
+.acordeon__panel {
+  padding-bottom: 1.3rem;
+  color: var(--tinta-suave);
+  max-width: 62ch;
+}
+
+.acordeon__panel[hidden] { display: none; }
+
+/* ==========================================================================
+   Tabla de documentos (transparencia)
+   ========================================================================== */
+
+.tabla-envoltorio {
+  overflow-x: auto;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  background: #fff;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--linea-tenue);
+  font-size: 0.94rem;
+}
+
+.tabla th {
+  background: var(--papel-alt);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.tabla tr:last-child td { border-bottom: 0; }
+
+/* ==========================================================================
+   Formularios
+   ========================================================================== */
+
+.formulario {
+  min-width: 0;
+  display: grid;
+  gap: 1.1rem;
+  background: #fff;
+  border: 1px solid var(--linea-tenue);
+  border-radius: var(--radio);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  box-shadow: var(--sombra);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.campo__ayuda {
+  font-size: 0.8rem;
+  color: var(--tinta-tenue);
+  font-weight: 400;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  /* sin esto el ancho intrínseco del control (size/cols por defecto) manda
+     sobre el del formulario y lo desborda en pantallas angostas */
+  width: 100%;
+  min-width: 0;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-chico);
+  background: var(--papel);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* el width:100% de arriba estiraba también las casillas y los radios: para
+   ellos vale lo contrario, un tamaño fijo y cómodo de tocar */
+.campo input[type="checkbox"],
+.campo input[type="radio"] {
+  /* 24 px es el mínimo de área de toque de la WCAG 2.5.8 */
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+  padding: 0;
+  accent-color: var(--verde);
+  cursor: pointer;
+}
+
+.campo--fila label {
+  cursor: pointer;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--verde);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(18, 105, 92, 0.16);
+}
+
+.campo textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.campo--error input,
+.campo--error select,
+.campo--error textarea {
+  border-color: #b3261e;
+}
+
+.campo__error {
+  font-size: 0.8rem;
+  color: #b3261e;
+}
+
+.campo__error[hidden] { display: none; }
+
+.campo--fila {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.campo--fila input { margin-top: 0.25rem; }
+
+.campo--fila label { font-weight: 400; font-size: 0.9rem; }
+
+.formulario__aviso {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radio-chico);
+  background: var(--verde-lavado);
+  color: var(--verde-oscuro);
+  font-size: 0.92rem;
+}
+
+.formulario__aviso[hidden] { display: none; }
+
+@media (min-width: 640px) {
+  .campos-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+}
+
+/* montos de donación */
+.montos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.monto {
+  flex: 1 1 90px;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-chico);
+  background: var(--papel);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.monto:hover { border-color: var(--verde); }
+
+.monto[aria-pressed="true"] {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+/* ==========================================================================
+   Datos de contacto
+   ========================================================================== */
+
+.lista-datos dt {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+
+.lista-datos dd {
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+}
+
+.lista-datos a { color: var(--verde); }
+
+.mapa {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radio);
+  border: 1px dashed var(--linea);
+  display: grid;
+  place-items: center;
+  background: var(--papel-alt);
+  color: var(--tinta-tenue);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ==========================================================================
+   Pie de página
+   ========================================================================== */
+
+.pie {
+  background: var(--tinta);
+  color: rgba(248, 246, 241, 0.78);
+  padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+}
+
+.pie a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pie a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.pie__grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .pie__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .pie__grid { grid-template-columns: 1fr; }
+}
+
+.pie__titulo {
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.pie__lista li + li { margin-top: 0.15rem; }
+
+/* WCAG 2.5.8: el área de toque mínima es 24 × 24 px. Los enlaces del pie y de
+   la miga de pan medían 16-18 px de alto; el padding los lleva al mínimo sin
+   mover la maqueta. */
+.pie__lista a,
+.migas a {
+  display: inline-block;
+  padding-block: 0.35rem;
+}
+
+.lista-datos a,
+.lista-datos dd {
+  overflow-wrap: anywhere;
+}
+
+/* correos y teléfonos son enlaces que se tocan con el dedo, no texto corrido */
+.lista-datos a {
+  display: inline-block;
+  padding-block: 0.3rem;
+}
+
+.pie__lista { font-size: 0.94rem; }
+
+.pie .marca__nombre { color: #fff; }
+.pie .marca__bajada { color: rgba(248, 246, 241, 0.55); }
+
+.pie__texto {
+  margin-top: 1rem;
+  font-size: 0.92rem;
+  max-width: 34ch;
+}
+
+.redes {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.3rem;
+}
+
+.redes a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.redes a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.redes svg {
+  width: 17px;
+  height: 17px;
+}
+
+.pie__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.84rem;
+  color: rgba(248, 246, 241, 0.55);
+}
+
+/* ==========================================================================
+   Aparición al hacer scroll (la activa assets/index.js)
+   ========================================================================== */
+
+/* el estado oculto sólo se aplica si el JS corrió y marcó <html class="con-js">;
+   sin JS todo queda visible por defecto */
+.con-js [data-revelar] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.con-js [data-revelar].visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   Página 404
+   ========================================================================== */
+
+.error-404 {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 60vh;
+  padding-block: 4rem;
+}
+
+.error-404 .bajada { margin-inline: auto; }

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: cambiar por el dominio real antes de publicar
+Sitemap: https://fundacionredh.org/sitemap.xml
