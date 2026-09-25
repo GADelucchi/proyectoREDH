@@ -13,7 +13,7 @@
     content="Fundación REDH trabaja por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres en Colombia, con enfoque de género.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Fundación REDH">
-  <meta name="theme-color" content="#12695c">
+  <meta name="theme-color" content="#29235c">
 
   <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website">
@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Sniglet&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/index.css">
 
@@ -48,7 +48,7 @@
     "alternateName": "REDH",
     "url": "https://fundacionredh.org/",
     "logo": "https://fundacionredh.org/assets/imgs/logo-redh.svg",
-    "description": "Fundación dedicada al trabajo comunitario y la ampliación de derechos y oportunidades.",
+    "description": "Fundación que trabaja por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres en Colombia.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bogotá",
@@ -69,44 +69,81 @@
 <body>
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
+  <!-- layout:cabecera -->
   <header class="cabecera">
     <div class="contenedor cabecera__inner">
       <a class="marca" href="index.html">
-        <svg class="marca__logo" viewBox="0 0 40 40" role="img" aria-label="Logotipo de Fundación REDH">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".25" />
-          <path d="M20 8v10m0 0 8.5 5M20 18l-8.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          <circle cx="20" cy="7.5" r="3.5" fill="currentColor" />
-          <circle cx="29.5" cy="24" r="3.5" fill="currentColor" />
-          <circle cx="10.5" cy="24" r="3.5" fill="currentColor" />
-        </svg>
-        <span class="marca__texto">
-          <span class="marca__nombre">Fundación REDH</span>
-          <!-- TODO: confirmar con el cliente la bajada oficial y qué significa la sigla REDH -->
-          <span class="marca__bajada">Derechos humanos · Niñez y género</span>
-        </span>
-      </a>
+          <img class="marca__logo" src="assets/imgs/logo-redh-horizontal.svg" width="227" height="67"
+            alt="Fundación REDH — Inicio">
+        </a>
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <ul class="nav__lista">
-          <li class="nav__inicio"><a class="nav__enlace" href="index.html">Inicio</a></li>
-          <li><a class="nav__enlace" href="pages/esto-es-redh.html">Esto es REDH</a></li>
-          <li><a class="nav__enlace" href="pages/lo-que-nos-mueve.html">Lo que nos mueve</a></li>
-          <li><a class="nav__enlace" href="pages/novedades.html">Novedades</a></li>
-          <li><a class="nav__enlace" href="pages/transparencia.html">Transparencia</a></li>
-          <li><a class="nav__enlace" href="pages/trama.html">TRAMA</a></li>
-          <li><a class="nav__enlace" href="pages/hablemos.html">Hablemos</a></li>
+          <li class="nav__item nav__item--solo-panel"><a class="nav__enlace" href="index.html">Inicio</a></li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="pages/esto-es-redh.html">Esto es REDH</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-esto-es-redh"
+              aria-label="Ver secciones de Esto es REDH"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-esto-es-redh">
+              <li><a class="submenu__enlace" href="pages/esto-es-redh.html#hemos-estado-ahi">Hemos estado ahí</a></li>
+              <li><a class="submenu__enlace" href="pages/esto-es-redh.html#historia">Nuestra historia</a></li>
+              <li><a class="submenu__enlace" href="pages/esto-es-redh.html#mision-vision">Misión y visión</a></li>
+              <li><a class="submenu__enlace" href="pages/esto-es-redh.html#asi-trabajamos">Así trabajamos</a></li>
+              <li><a class="submenu__enlace" href="pages/esto-es-redh.html#equipo">Quienes hacen REDH</a></li>
+            </ul>
+          </li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="pages/lo-que-nos-mueve.html">Lo que nos mueve</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-lo-que-nos-mueve"
+              aria-label="Ver secciones de Lo que nos mueve"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-lo-que-nos-mueve">
+              <li><a class="submenu__enlace" href="pages/lo-que-nos-mueve.html#crecer-con-derechos">Crecer con derechos</a></li>
+              <li><a class="submenu__enlace" href="pages/lo-que-nos-mueve.html#vivir-sin-violencias">Vivir sin violencias</a></li>
+              <li><a class="submenu__enlace" href="pages/lo-que-nos-mueve.html#brigadas-de-salud">Brigadas de salud</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__enlace" href="pages/hablemos.html">Hablemos</a></li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="pages/trama.html">TRAMA</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-trama"
+              aria-label="Ver secciones de TRAMA"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-trama">
+              <li><a class="submenu__enlace" href="pages/trama.html#que-es-trama">¿Qué es TRAMA?</a></li>
+              <li><a class="submenu__enlace" href="pages/trama.html#como-funciona">¿Cómo funciona?</a></li>
+              <li><a class="submenu__enlace" href="pages/trama.html#colecciones">Colecciones</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--solo-panel">
+            <a class="nav__enlace" href="pages/sumate.html">Súmate</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-sumate-panel"
+              aria-label="Ver secciones de Súmate"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-sumate-panel">
+              <li><a class="submenu__enlace" href="pages/sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+              <li><a class="submenu__enlace" href="pages/sumate.html#aportar">Quiero aportar</a></li>
+              <li><a class="submenu__enlace" href="pages/sumate.html#alianzas">Quiero proponer una alianza</a></li>
+            </ul>
+          </li>
         </ul>
-        <a class="btn btn--acento nav__cta" href="pages/sumate.html">Súmate</a>
       </nav>
 
       <div class="cabecera__acciones">
-        <a class="btn btn--acento" href="pages/sumate.html">Súmate</a>
+        <div class="nav__item nav__item--destacado">
+          <a class="btn btn--acento" href="pages/sumate.html">Súmate</a>
+          <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-sumate-destacado"
+              aria-label="Ver secciones de Súmate"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="submenu" id="submenu-sumate-destacado">
+              <li><a class="submenu__enlace" href="pages/sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+              <li><a class="submenu__enlace" href="pages/sumate.html#aportar">Quiero aportar</a></li>
+              <li><a class="submenu__enlace" href="pages/sumate.html#alianzas">Quiero proponer una alianza</a></li>
+            </ul>
+        </div>
         <button class="menu-boton" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
           <span class="menu-boton__barras"></span>
         </button>
       </div>
     </div>
   </header>
+  <!-- /layout:cabecera -->
 
   <main id="contenido">
 
@@ -117,372 +154,166 @@
       <div class="contenedor hero__grid">
         <div class="hero__texto">
           <span class="antetitulo">Fundación REDH</span>
-          <h1>Derechos humanos para niñas, niños, adolescentes y mujeres</h1>
+          <h1>Hacemos REDH para cuidar, acompañar y transformar</h1>
           <p class="bajada">
-            Desde Bogotá, trabajamos en formación, prevención, acompañamiento y
-            fortalecimiento de entornos protectores, con enfoque de género y una
-            pregunta que nos reúne desde 2015: ¿cómo podemos aportar?
+            En Fundación REDH trabajamos para que niñas, niños, adolescentes y mujeres
+            conozcan sus derechos, fortalezcan sus capacidades y encuentren entornos más
+            protectores, equitativos y libres de violencias.
           </p>
           <div class="acciones">
-            <a class="btn btn--primario" href="pages/lo-que-nos-mueve.html">Lo que nos mueve</a>
-            <a class="btn btn--linea" href="pages/sumate.html#donar">Quiero colaborar</a>
+            <a class="btn btn--primario" href="pages/esto-es-redh.html">Conoce REDH</a>
+            <a class="btn btn--acento" href="pages/sumate.html">Súmate</a>
           </div>
-
-          <ul class="hero__datos">
-            <!-- TODO: las dos primeras cifras las tiene que confirmar el cliente.
-                 No publicar números que no puedan sostener. -->
-            <li class="dato">
-              <span class="dato__numero">2015</span>
-              <span class="dato__texto">Año en que empezamos a trabajar</span>
-            </li>
-            <li class="dato">
-              <span class="dato__numero">2</span>
-              <span class="dato__texto">Líneas de trabajo: niñez y adolescencia, y género</span>
-            </li>
-            <li class="dato">
-              <span class="dato__numero">+0000</span>
-              <span class="dato__texto">Personas alcanzadas por nuestras jornadas</span>
-            </li>
-          </ul>
         </div>
 
-        <!-- TODO: reemplazar por <img class="figura" src="assets/imgs/hero.jpg"
-             alt="descripción real de la foto" width="720" height="540" loading="eager"> -->
-        <div class="figura figura--ph figura--ancha" role="img" aria-label="Espacio reservado para la foto principal">
-          Foto principal · 1440 × 1080
-        </div>
+        <picture>
+          <source srcset="assets/imgs/galeria/01-bogota-jornada-comunitaria-recreacion.webp" type="image/webp">
+          <img class="figura" src="assets/imgs/galeria/01-bogota-jornada-comunitaria-recreacion.jpg"
+            alt="Niñas y niños juegan en ronda en una cancha de Bogotá durante una jornada comunitaria de REDH"
+            width="1200" height="900" loading="eager" fetchpriority="high">
+        </picture>
       </div>
     </section>
 
     <!-- ================================================================
-         LO QUE NOS MUEVE · resumen de las líneas de trabajo
+         LO QUE NOS MUEVE · las dos líneas de trabajo
          ================================================================ -->
     <section class="seccion" aria-labelledby="titulo-lineas">
       <div class="contenedor">
         <div class="encabezado-seccion" data-revelar>
           <span class="antetitulo">Lo que nos mueve</span>
-          <h2 id="titulo-lineas">Dos líneas de trabajo y un eje que las atraviesa</h2>
-          <p class="bajada">
-            Trabajamos por los derechos de la niñez y la adolescencia, y por una vida
-            libre de violencias basadas en género. Las brigadas de salud acompañan a
-            ambas de manera transversal.
-          </p>
+          <h2 id="titulo-lineas">Así llevamos nuestro propósito a la acción</h2>
         </div>
 
-        <div class="grilla grilla--3" data-revelar>
+        <div class="grilla grilla--2" data-revelar>
           <article class="tarjeta tarjeta--enlazada">
-            <span class="tarjeta__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9.5" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              </svg>
-            </span>
-            <h3>Crecer con derechos</h3>
-            <p>Para que cada niña, niño y adolescente crezca en entornos seguros, sea
-              escuchado y participe en las decisiones que le afectan.</p>
-            <p class="tarjeta__pie"><a class="enlace-flecha" href="pages/lo-que-nos-mueve.html#crecer-con-derechos">Ver la
-                línea</a></p>
+            <h3 class="cinta cinta--naranja">Crecer con derechos</h3>
+            <p>Acompañamos procesos que fortalecen la participación, la prevención de violencias
+              y los entornos protectores de niñas, niños y adolescentes.</p>
+            <p class="tarjeta__pie"><a class="enlace-flecha"
+                href="pages/lo-que-nos-mueve.html#crecer-con-derechos">Conoce esta línea</a></p>
           </article>
 
           <article class="tarjeta tarjeta--enlazada">
-            <span class="tarjeta__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path
-                  d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z" />
-              </svg>
-            </span>
-            <h3>Vivir sin violencias</h3>
-            <p>Para que el género no determine las oportunidades de una persona ni la
-              exponga a discriminaciones o violencias.</p>
-            <p class="tarjeta__pie"><a class="enlace-flecha" href="pages/lo-que-nos-mueve.html#vivir-sin-violencias">Ver la
-                línea</a></p>
-          </article>
-
-          <article class="tarjeta tarjeta--enlazada">
-            <span class="tarjeta__icono" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 4v16M4 12h16" />
-                <circle cx="12" cy="12" r="9" />
-              </svg>
-            </span>
-            <h3>Brigadas de salud</h3>
-            <p>Cuidado, prevención y orientación en salud, como eje transversal de las
-              dos líneas de trabajo.</p>
-            <p class="tarjeta__pie"><a class="enlace-flecha" href="pages/lo-que-nos-mueve.html#brigadas">Ver el eje</a></p>
+            <h3 class="cinta cinta--violeta">Vivir sin violencias</h3>
+            <p>Promovemos relaciones más igualitarias y herramientas para reconocer, prevenir y
+              enfrentar las violencias basadas en género.</p>
+            <p class="tarjeta__pie"><a class="enlace-flecha"
+                href="pages/lo-que-nos-mueve.html#vivir-sin-violencias">Conoce esta línea</a></p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ================================================================
-         QUIÉNES SOMOS · resumen
+         NUESTRA FORMA DE TRABAJAR
          ================================================================ -->
-    <section class="seccion seccion--alt" aria-labelledby="titulo-nosotros">
+    <section class="seccion seccion--alt" aria-labelledby="titulo-forma">
       <div class="contenedor bloque" data-revelar>
         <div>
-          <span class="antetitulo">Esto es REDH</span>
-          <h2 id="titulo-nosotros">Todo comenzó con una pregunta: ¿cómo podemos aportar?</h2>
-          <div class="texto-largo">
-            <p>
-              REDH nació en 2015 como una iniciativa familiar en Bogotá, después de
-              varios años buscando espacios de voluntariado. Con el tiempo entendimos
-              que los conocimientos y capacidades de cada quien podían ponerse al
-              servicio de un propósito común, y en 2020 nos constituimos formalmente
-              como fundación.
-            </p>
-            <p>
-              Aprendimos que tener buenas intenciones no era suficiente: hacía falta
-              escuchar, comprender los contextos y actuar con responsabilidad. Hoy
-              iniciamos una nueva etapa, con un equipo renovado y conocimientos desde
-              el Trabajo Social y la Antropología.
-            </p>
-          </div>
+          <span class="antetitulo">Nuestra forma de trabajar</span>
+          <h2 id="titulo-forma">Escuchamos. Construimos con las personas. Actuamos con responsabilidad.</h2>
+          <p class="bajada">Nuestro trabajo parte de los derechos humanos, el enfoque de género, las
+            diferencias de cada persona y las realidades de cada territorio.</p>
           <div class="acciones">
-            <a class="btn btn--linea" href="pages/esto-es-redh.html">Conoce la fundación</a>
+            <a class="btn btn--linea" href="pages/esto-es-redh.html#asi-trabajamos">Así trabajamos</a>
           </div>
         </div>
 
-        <div class="bloque__figura figura figura--ph" role="img" aria-label="Espacio reservado para foto del equipo">
-          Foto del equipo · 1200 × 900
-        </div>
+        <picture class="bloque__figura">
+          <source srcset="assets/imgs/galeria/04-bogota-afrocuidadores-del-territorio.webp" type="image/webp">
+          <img class="figura" src="assets/imgs/galeria/04-bogota-afrocuidadores-del-territorio.jpg"
+            alt="Integrantes de REDH conversan con participantes de una jornada con Afrocuidadores del Territorio en Bogotá"
+            width="960" height="960" loading="lazy">
+        </picture>
       </div>
     </section>
 
     <!-- ================================================================
-         IMPACTO · franja de números
+         NUEVA ETAPA
+         TODO: el documento sugiere mostrar "logo anterior → logo nuevo".
+         Falta el archivo del logo anterior; cuando llegue, sumarlo acá.
          ================================================================ -->
-    <section class="seccion seccion--ajustada franja-datos" aria-labelledby="titulo-impacto">
-      <div class="contenedor">
-        <h2 class="oculto-visual" id="titulo-impacto">Nuestro impacto en números</h2>
-        <ul class="grilla grilla--4">
-          <!-- TODO: datos reales del último año -->
-          <li class="dato">
-            <span class="dato__numero">0000</span>
-            <span class="dato__texto">Familias acompañadas durante el último año</span>
-          </li>
-          <li class="dato">
-            <span class="dato__numero">00</span>
-            <span class="dato__texto">Barrios y localidades donde trabajamos</span>
-          </li>
-          <li class="dato">
-            <span class="dato__numero">000</span>
-            <span class="dato__texto">Voluntarias y voluntarios activos</span>
-          </li>
-          <li class="dato">
-            <span class="dato__numero">00 %</span>
-            <span class="dato__texto">De lo recaudado va directo a los programas</span>
-          </li>
-        </ul>
+    <section class="seccion" aria-labelledby="titulo-etapa">
+      <div class="contenedor bloque bloque--invertido" data-revelar>
+        <div>
+          <span class="antetitulo">Nueva etapa</span>
+          <h2 id="titulo-etapa">REDH está construyendo una nueva etapa</h2>
+          <p class="bajada">Estamos renovando nuestra identidad, fortaleciendo nuestras líneas de
+            trabajo y creando mejores formas de documentar y compartir lo que hacemos. Queremos que la
+            confianza se construya con transparencia y con acciones que podamos mostrar y respaldar.</p>
+          <div class="acciones">
+            <a class="btn btn--linea" href="pages/esto-es-redh.html#historia">Conoce nuestra historia</a>
+          </div>
+        </div>
+
+        <img class="bloque__figura nueva-etapa__logo" src="assets/imgs/logo-redh.svg"
+          alt="Nuevo logo de Fundación REDH" width="192" height="192" loading="lazy">
       </div>
     </section>
 
     <!-- ================================================================
-         CÓMO AYUDAR
+         SÚMATE
          ================================================================ -->
-    <section class="seccion" aria-labelledby="titulo-ayudar">
-      <div class="contenedor">
-        <div class="encabezado-seccion" data-revelar>
-          <span class="antetitulo">Cómo colaborar</span>
-          <h2 id="titulo-ayudar">Hay más de una forma de sumarse</h2>
-        </div>
-
-        <div class="grilla grilla--3" data-revelar>
-          <article class="tarjeta tarjeta--destacada">
-            <h3>Donar</h3>
-            <p>
-              Un aporte mensual nos permite sostener los programas y planificar a
-              largo plazo. TODO: explicar a qué se destina.
-            </p>
-            <p class="tarjeta__pie"><a class="btn btn--claro" href="pages/sumate.html#donar">Quiero donar</a></p>
-          </article>
-
-          <article class="tarjeta">
-            <h3>Ser voluntario/a</h3>
-            <p>
-              Buscamos personas para acompañar los talleres, la logística y la
-              comunicación. TODO: perfiles y carga horaria.
-            </p>
-            <p class="tarjeta__pie"><a class="enlace-flecha" href="pages/sumate.html#voluntariado">Cómo participar</a></p>
-          </article>
-
-          <article class="tarjeta">
-            <h3>Alianzas y empresas</h3>
-            <p>
-              Diseñamos programas de impacto junto a empresas y organismos.
-              TODO: qué tipo de alianzas buscan.
-            </p>
-            <p class="tarjeta__pie"><a class="enlace-flecha" href="pages/sumate.html#alianzas">Trabajemos juntos</a></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         NOVEDADES
-         ================================================================ -->
-    <section class="seccion seccion--alt" aria-labelledby="titulo-novedades">
-      <div class="contenedor">
-        <div class="encabezado-seccion" data-revelar>
-          <span class="antetitulo">Novedades</span>
-          <h2 id="titulo-novedades">Lo último de la fundación</h2>
-        </div>
-
-        <div class="grilla grilla--3" data-revelar>
-          <!-- TODO: las tres notas más recientes -->
-          <article class="nota">
-            <div class="figura figura--ph nota__figura" role="img" aria-label="Imagen de la nota">Imagen · 800 × 500
-            </div>
-            <div class="nota__cuerpo">
-              <p class="nota__meta"><span class="etiqueta">Programas</span> <time datetime="2026-08-14">14 de agosto de
-                  2026</time></p>
-              <h3 class="nota__titulo"><a href="pages/novedad-ejemplo.html">Título de la novedad más reciente</a></h3>
-              <p>Resumen de dos líneas que invite a entrar a leer la nota completa.</p>
-            </div>
-          </article>
-
-          <article class="nota">
-            <div class="figura figura--ph nota__figura" role="img" aria-label="Imagen de la nota">Imagen · 800 × 500
-            </div>
-            <div class="nota__cuerpo">
-              <p class="nota__meta"><span class="etiqueta">Institucional</span> <time datetime="2026-07-02">2 de julio
-                  de 2026</time></p>
-              <h3 class="nota__titulo"><a href="pages/novedad-ejemplo.html">Título de la segunda novedad</a></h3>
-              <p>Resumen de dos líneas que invite a entrar a leer la nota completa.</p>
-            </div>
-          </article>
-
-          <article class="nota">
-            <div class="figura figura--ph nota__figura" role="img" aria-label="Imagen de la nota">Imagen · 800 × 500
-            </div>
-            <div class="nota__cuerpo">
-              <p class="nota__meta"><span class="etiqueta">Territorio</span> <time datetime="2026-06-19">19 de junio de
-                  2026</time></p>
-              <h3 class="nota__titulo"><a href="pages/novedad-ejemplo.html">Título de la tercera novedad</a></h3>
-              <p>Resumen de dos líneas que invite a entrar a leer la nota completa.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="acciones">
-          <a class="btn btn--linea" href="pages/novedades.html">Ver todas las novedades</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         ALIADOS
-         ================================================================ -->
-    <section class="seccion seccion--ajustada" aria-labelledby="titulo-aliados">
-      <div class="contenedor">
-        <div class="encabezado-seccion">
-          <h2 id="titulo-aliados">Nos acompañan</h2>
-        </div>
-        <!-- TODO: reemplazar por <img> con los logos reales -->
-        <div class="aliados">
-          <div class="aliado">Logo aliado 1</div>
-          <div class="aliado">Logo aliado 2</div>
-          <div class="aliado">Logo aliado 3</div>
-          <div class="aliado">Logo aliado 4</div>
-          <div class="aliado">Logo aliado 5</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         CTA FINAL
-         ================================================================ -->
-    <section class="seccion cta">
+    <section class="seccion cta superficie-oscura" aria-labelledby="titulo-sumate">
       <div class="contenedor cta__inner">
         <div>
-          <h2>Tu aporte sostiene el trabajo de todos los días</h2>
-          <p>
-            TODO: una frase concreta sobre qué logra una donación (por ejemplo,
-            "con $X por mes cubrimos los materiales de un taller").
-          </p>
+          <h2 id="titulo-sumate">Hay muchas formas de hacer REDH</h2>
+          <p>Puedes aportar, participar como voluntaria o voluntario, proponer una alianza o
+            ayudarnos a ampliar esta red.</p>
         </div>
         <div class="acciones">
-          <a class="btn btn--acento" href="pages/sumate.html#donar">Donar ahora</a>
-          <a class="btn btn--fantasma-claro" href="pages/hablemos.html">Escríbenos</a>
+          <a class="btn btn--acento" href="pages/sumate.html">Quiero sumarme</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="pie">
+  <!-- layout:pie -->
+  <footer class="pie superficie-oscura">
     <div class="contenedor">
       <div class="pie__grid">
         <div>
           <a class="marca" href="index.html">
-            <svg class="marca__logo" viewBox="0 0 40 40" role="img" aria-label="Logotipo de Fundación REDH">
-              <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".25" />
-              <path d="M20 8v10m0 0 8.5 5M20 18l-8.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <circle cx="20" cy="7.5" r="3.5" fill="currentColor" />
-              <circle cx="29.5" cy="24" r="3.5" fill="currentColor" />
-              <circle cx="10.5" cy="24" r="3.5" fill="currentColor" />
-            </svg>
-            <span class="marca__texto">
-              <span class="marca__nombre">Fundación REDH</span>
-              <span class="marca__bajada">Derechos humanos · Niñez y género</span>
-            </span>
-          </a>
-          <p class="pie__texto">
-            Trabajamos por la promoción y protección de los derechos humanos de niñas,
-            niños, adolescentes y mujeres, en Bogotá y en distintos territorios de
-            Colombia.
-          </p>
+          <img class="marca__logo" src="assets/imgs/logo-redh-horizontal-blanco.svg" width="227" height="67"
+            alt="Fundación REDH — Inicio">
+        </a>
+          <p class="pie__lema">Protección humanitaria</p>
+          <p class="pie__texto">Trabajamos por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres, en Bogotá y en distintos territorios de Colombia.</p>
           <div class="redes">
-            <!-- TODO: reemplazar por los perfiles reales -->
-            <a href="#" aria-label="Instagram de Fundación REDH"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg></a>
-            <a href="#" aria-label="Facebook de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z" />
-              </svg></a>
-            <a href="#" aria-label="LinkedIn de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path
-                  d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.3 20.5h3.3V8.9H3.3v11.6zM9.3 8.9h3.16v1.6h.05c.44-.83 1.5-1.7 3.1-1.7 3.3 0 3.9 2.17 3.9 5v6.7h-3.3v-5.9c0-1.4 0-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1v6h-3.3V8.9z" />
-              </svg></a>
-            <a href="#" aria-label="YouTube de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path
-                  d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.2V8.8l5.2 3.2-5.2 3.2z" />
-              </svg></a>
+            <a href="#" aria-label="Instagram de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="WhatsApp de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8.3 19z"/><path d="M9 8.8c0 3 2.6 6 6 6.4l1.2-1.4-1.9-1-.9.8a4.5 4.5 0 0 1-2.4-2.4l.8-.9-1-1.9z" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:contacto@fundacionredh.org" aria-label="Correo de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
           </div>
         </div>
 
         <div>
-          <h2 class="pie__titulo">La fundación</h2>
+          <h2 class="pie__titulo"><a href="pages/esto-es-redh.html">La fundación</a></h2>
           <ul class="pie__lista">
-            <li><a href="pages/esto-es-redh.html">Esto es REDH</a></li>
+            <li><a href="pages/esto-es-redh.html#hemos-estado-ahi">Hemos estado ahí</a></li>
             <li><a href="pages/esto-es-redh.html#historia">Nuestra historia</a></li>
-            <li><a href="pages/esto-es-redh.html#enfoques">Así trabajamos</a></li>
+            <li><a href="pages/esto-es-redh.html#mision-vision">Misión y visión</a></li>
+            <li><a href="pages/esto-es-redh.html#asi-trabajamos">Así trabajamos</a></li>
             <li><a href="pages/esto-es-redh.html#equipo">Quienes hacen REDH</a></li>
           </ul>
         </div>
 
         <div>
-          <h2 class="pie__titulo">Qué hacemos</h2>
+          <h2 class="pie__titulo"><a href="pages/lo-que-nos-mueve.html">Lo que nos mueve</a></h2>
           <ul class="pie__lista">
             <li><a href="pages/lo-que-nos-mueve.html#crecer-con-derechos">Crecer con derechos</a></li>
             <li><a href="pages/lo-que-nos-mueve.html#vivir-sin-violencias">Vivir sin violencias</a></li>
-            <li><a href="pages/lo-que-nos-mueve.html#brigadas">Brigadas de salud</a></li>
-            <li><a href="pages/novedades.html">Novedades</a></li>
+            <li><a href="pages/lo-que-nos-mueve.html#brigadas-de-salud">Brigadas de salud</a></li>
           </ul>
         </div>
 
         <div>
-          <h2 class="pie__titulo">Súmate</h2>
+          <h2 class="pie__titulo"><a href="pages/sumate.html">Súmate</a></h2>
           <ul class="pie__lista">
-            <li><a href="pages/sumate.html#donar">Donar</a></li>
-            <li><a href="pages/sumate.html#voluntariado">Voluntariado</a></li>
-            <li><a href="pages/sumate.html#alianzas">Alianzas y empresas</a></li>
+            <li><a href="pages/sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+            <li><a href="pages/sumate.html#aportar">Quiero aportar</a></li>
+            <li><a href="pages/sumate.html#alianzas">Quiero proponer una alianza</a></li>
             <li><a href="pages/trama.html">TRAMA</a></li>
             <li><a href="pages/hablemos.html">Hablemos</a></li>
           </ul>
@@ -490,12 +321,12 @@
       </div>
 
       <div class="pie__legal">
-        <!-- TODO: NIT y datos de registro reales (Cámara de Comercio de Bogotá) -->
         <p>© <span data-anio>2026</span> Fundación REDH · Entidad sin ánimo de lucro · NIT 000.000.000-0</p>
         <p>Bogotá D.C., Colombia</p>
       </div>
     </div>
   </footer>
+  <!-- /layout:pie -->
 
   <script src="assets/index.js" defer></script>
 </body>

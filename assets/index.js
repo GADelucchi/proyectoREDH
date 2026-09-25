@@ -11,6 +11,10 @@
   /* marca que el JS corrió: el CSS lo usa para las animaciones de entrada */
   document.documentElement.classList.add('con-js');
 
+  /* Debe coincidir con el @media (max-width: 1100px) de assets/index.css,
+     donde la barra horizontal pasa a panel móvil. */
+  var ANCHO_MAXIMO_MENU_MOVIL = 1100;
+
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) {
     return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
@@ -82,9 +86,100 @@
 
     /* si se vuelve a escritorio con el menú abierto, se resetea */
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 1200) cerrarMenu();
+      if (window.innerWidth > ANCHO_MAXIMO_MENU_MOVIL) cerrarMenu();
     });
   }
+
+  /* ------------------------------------------------------------------
+     3 bis. Submenús de la navegación
+     En escritorio el CSS los abre con :hover y :focus-within; este bloque
+     agrega el botón de flecha (táctil y teclado), Escape y clic afuera.
+     En el panel móvil funcionan como acordeón con el mismo botón.
+     ------------------------------------------------------------------ */
+  (function submenus() {
+    var CLASE_ABIERTO = 'nav__item--abierto';
+    var CLASE_CERRADO_FORZADO = 'nav__item--cerrado-forzado';
+    var botones = $$('.submenu-boton');
+    if (!botones.length) return;
+
+    function itemDe(boton) {
+      return boton.closest('.nav__item');
+    }
+
+    function abrirSubmenu(boton) {
+      itemDe(boton).classList.add(CLASE_ABIERTO);
+      itemDe(boton).classList.remove(CLASE_CERRADO_FORZADO);
+      boton.setAttribute('aria-expanded', 'true');
+    }
+
+    function cerrarSubmenu(boton) {
+      itemDe(boton).classList.remove(CLASE_ABIERTO);
+      boton.setAttribute('aria-expanded', 'false');
+    }
+
+    function cerrarTodosMenos(botonQueQuedaAbierto) {
+      botones.forEach(function (boton) {
+        if (boton !== botonQueQuedaAbierto) cerrarSubmenu(boton);
+      });
+    }
+
+    botones.forEach(function (boton) {
+      boton.addEventListener('click', function (evento) {
+        evento.stopPropagation();
+        var estaAbierto = boton.getAttribute('aria-expanded') === 'true';
+        cerrarTodosMenos(boton);
+        if (estaAbierto) cerrarSubmenu(boton);
+        else abrirSubmenu(boton);
+      });
+
+      /* tras un Escape el submenú queda oculto aunque el mouse siga encima;
+         al salir del ítem vuelve a responder al hover normalmente */
+      itemDe(boton).addEventListener('mouseleave', function () {
+        itemDe(boton).classList.remove(CLASE_CERRADO_FORZADO);
+      });
+      itemDe(boton).addEventListener('focusout', function (evento) {
+        if (!itemDe(boton).contains(evento.relatedTarget)) {
+          itemDe(boton).classList.remove(CLASE_CERRADO_FORZADO);
+        }
+      });
+    });
+
+    document.addEventListener('click', function (evento) {
+      if (!evento.target.closest('.nav__item')) cerrarTodosMenos(null);
+    });
+
+    document.addEventListener('keydown', function (evento) {
+      if (evento.key !== 'Escape') return;
+      var itemConFoco = document.activeElement && document.activeElement.closest('.nav__item');
+
+      botones.forEach(function (boton) {
+        var item = itemDe(boton);
+        /* sólo se fuerza el cierre de lo que está visible en este momento;
+           si se marcara todo, un ítem que nunca recibió el mouse quedaría
+           bloqueado hasta un mouseleave que no va a llegar */
+        var estaVisible = item.classList.contains(CLASE_ABIERTO) || item.matches(':hover, :focus-within');
+        cerrarSubmenu(boton);
+        if (estaVisible) item.classList.add(CLASE_CERRADO_FORZADO);
+      });
+
+      /* si el foco estaba dentro de un submenú, vuelve a su botón */
+      var botonDelItem = itemConFoco && $('.submenu-boton', itemConFoco);
+      if (botonDelItem) botonDelItem.focus();
+    });
+
+    /* un enlace a una sección de la misma página no recarga: hay que
+       cerrar el submenú a mano para que no tape el contenido */
+    $$('.submenu__enlace').forEach(function (enlace) {
+      enlace.addEventListener('click', function () {
+        cerrarTodosMenos(null);
+        /* el header es sticky: tras el salto el mouse sigue sobre el submenú
+           y el :hover lo mantendría abierto encima del contenido */
+        if (document.activeElement) document.activeElement.blur();
+        /* después del blur: su focusout limpia la marca de cierre forzado */
+        enlace.closest('.nav__item').classList.add(CLASE_CERRADO_FORZADO);
+      });
+    });
+  })();
 
   /* ------------------------------------------------------------------
      4. Enlace activo en la navegación

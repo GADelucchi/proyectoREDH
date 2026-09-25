@@ -30,19 +30,25 @@ Los nombres de sección salen del documento de contenido del cliente.
 proyectoREDH/
 ├── index.html                Inicio (única página en la raíz)
 ├── pages/                    El resto de las páginas
-│   ├── esto-es-redh.html         Historia · misión y visión · trayectoria · enfoques · equipo
+│   ├── esto-es-redh.html         Hemos estado ahí (galería) · historia · misión y visión · así trabajamos · equipo
 │   ├── lo-que-nos-mueve.html     Crecer con derechos · Vivir sin violencias · Brigadas de salud
-│   ├── trama.html                Estrategia de autosostenimiento y su relación con REDH
-│   ├── sumate.html               Donaciones · voluntariado · alianzas · boletín
-│   ├── hablemos.html             Formulario y datos de contacto
-│   ├── novedades.html            Listado de notas, con filtro por categoría
+│   ├── trama.html                Qué es TRAMA · cómo funciona · colecciones
+│   ├── sumate.html               Voluntariado · aportes · alianzas
+│   ├── hablemos.html             Formulario y canales institucionales
+│   ├── novedades.html            Listado de notas (fuera del menú; se conserva)
 │   ├── novedad-ejemplo.html      Plantilla de nota interna (duplicar por cada nota)
-│   ├── transparencia.html        Memorias, balances, datos legales y preguntas frecuentes
+│   ├── transparencia.html        Memorias, balances y datos legales (fuera del menú; se conserva)
 │   └── 404.html                  Página de error (noindex) — ver la nota de abajo
 ├── assets/
 │   ├── index.css             Toda la hoja de estilos
 │   ├── index.js              Todo el comportamiento
-│   └── imgs/                 Fotos, logos, favicon, og-image
+│   └── imgs/                 Logos del manual, favicon, galeria/ (fotos del cliente)
+├── scripts/
+│   ├── generar-layout.mjs    Escribe header y footer en cada HTML (npm run layout)
+│   └── layout/
+│       ├── navegacion.mjs    Fuente única del menú, submenús, footer y canales
+│       └── plantillas.mjs    HTML del header y del footer
+├── package.json              Sólo scripts de desarrollo, sin dependencias
 ├── robots.txt
 ├── sitemap.xml
 └── docs/
@@ -114,29 +120,68 @@ python3 -m http.server 8000
 
 ### Colores y tipografía
 
-Está todo en `:root`, al principio de `assets/index.css`. Cambiando esas
-variables se repinta el sitio entero. Las tipografías (Fraunces + Inter) se
-cargan desde Google Fonts en el `<head>` de cada página.
+Está todo en `:root`, al principio de `assets/index.css`, y sale del manual de
+marca (`archivos/manual inicial.pdf`):
+
+- **Paleta** (`--marca-*`): azul `#2a4b9b`, naranja `#f9b03d`, violeta
+  `#63318a`, gris `#dbdbdb` y azul noche `#29235c`, más los matices 80/50/20 %
+  del manual. El resto de la hoja no usa esos nombres sino **roles**
+  (`--color-texto`, `--color-primario`, `--color-acento`…): para cambiar qué
+  color cumple qué función se toca una línea.
+- **Tipografía**: h1 en Sniglet, h2 en Montserrat ExtraBold, h3 y cuerpo en
+  Montserrat Light. Se cargan desde Google Fonts en el `<head>` de cada página.
+- **Tamaños**: se respetan las proporciones del manual (cuerpo 14 · h3 18 · h2 20
+  · h1 28). Sólo la base es fluida (16 → 18 px); los títulos se calculan con
+  `calc()` a partir de ella, así la jerarquía es la misma en cualquier pantalla.
+- **Naranja en los h2**: el manual pone los h2 en naranja, pero `#f9b03d` sobre
+  blanco tiene un contraste de 1,9:1 y la WCAG pide 3:1 para texto grande. Por
+  eso en fondos claros los h2 van en azul y el naranja se usa en las superficies
+  oscuras (`.superficie-oscura`: franja de llamada a la acción y pie), donde
+  llega a 7,6:1 sobre azul noche y 4,8:1 sobre violeta.
 
 ### Cabecera y pie
 
-Están duplicados en cada archivo HTML, que es el precio de no tener build. Si se
-edita el menú hay que replicar el cambio en las 10 páginas. Cuando eso moleste,
-se resuelve en 20 líneas con un script de build o con los *includes* de Netlify;
-no hace falta migrar a un framework.
+**No se editan a mano.** Los genera `scripts/generar-layout.mjs` a partir de
+`scripts/layout/navegacion.mjs`, que es la única fuente del menú, sus submenús,
+las columnas del pie y los canales de contacto. En cada HTML van entre dos
+marcadores:
+
+```html
+<!-- layout:cabecera --> … <!-- /layout:cabecera -->
+<!-- layout:pie -->      … <!-- /layout:pie -->
+```
+
+Para agregar, sacar o renombrar una sección:
+
+1. Editar `scripts/layout/navegacion.mjs` (el `ancla` tiene que coincidir con el
+   `id` de la `<section>` en la página).
+2. `npm run layout` — reescribe el bloque en las 10 páginas.
+3. `npm run layout:verificar` — no escribe nada; falla si alguna página quedó
+   desactualizada o si un submenú apunta a un `id` que no existe. Conviene
+   correrlo antes de publicar.
+
+Node se usa sólo en la máquina de desarrollo y sin dependencias (no hay
+`node_modules`). Lo que se publica sigue siendo HTML estático: el hosting no
+necesita build ni servidor. Para una página nueva, copiar una existente
+(ya trae los marcadores) y correr `npm run layout`.
+
+Los submenús se abren con *hover* y foco en escritorio, y con el botón de
+flecha (táctil y teclado); `Escape` los cierra. En el panel móvil funcionan como
+acordeón. Esa lógica está en el bloque "3 bis" de `assets/index.js`.
 
 El enlace activo del menú **no** se marca a mano: `assets/index.js` compara la
 URL con cada `href` y le pone `aria-current="page"`.
 
 ### El menú y su punto de corte
 
-La barra horizontal necesita unos 1190 px para las siete etiquetas sin recortarse
-(medido con la tipografía de reemplazo, que es más ancha que Inter). Por eso el
-menú hamburguesa aparece **por debajo de 1200 px**, y por encima de ese ancho se
-oculta el enlace "Inicio" de la lista, porque el logo ya cumple esa función.
+Con Montserrat y las cuatro entradas actuales, logo + menú + botón entran holgados a 1101 px de ventana.
+El menú hamburguesa aparece **por debajo de 1101 px**. "Inicio" y "Súmate" sólo
+se listan dentro del panel móvil: en la barra, el logo lleva a Inicio y Súmate
+es el botón destacado.
 
-Si se agrega o se renombra una sección del menú, hay que volver a medir ese
-punto de corte. Es lo único del layout que no se ajusta solo.
+El número vive en dos lugares que tienen que coincidir: el `@media
+(max-width: 1100px)` de `assets/index.css` y `ANCHO_MAXIMO_MENU_MOVIL` en
+`assets/index.js`. Si se agrega una entrada al menú hay que volver a medirlo.
 
 ### Agregar una novedad
 
@@ -150,6 +195,10 @@ punto de corte. Es lo único del layout que no se ajusta solo.
 5. Sumar la URL a `sitemap.xml`.
 
 ### Imágenes
+
+Las fotos del cliente están en `assets/imgs/galeria/`, redimensionadas a 1200 px
+como máximo y en dos formatos (WebP con JPG de respaldo, dentro de `<picture>`).
+Los originales quedan en `archivos/`.
 
 Los recuadros a rayas son *placeholders*: `<div class="figura figura--ph">` con
 la medida sugerida escrita adentro. Al llegar las fotos reales se reemplazan por
@@ -187,7 +236,8 @@ elementos recortados y sin errores de JS en ninguna página.
 - [x] ~~Dominio~~: `fundacionredh.org`, confirmado y ya aplicado en canonical, Open Graph, `robots.txt` y `sitemap.xml`
 - [ ] Subdominio de TRAMA (lo decide el cliente: `.store` o `.org`) y su plataforma de e-commerce
 - [ ] `assets/imgs/og-image.jpg` (1200 × 630) para cuando se comparta en redes
-- [ ] Logo definitivo en vector (hoy hay uno provisorio) y paleta de marca
+- [x] ~~Logo definitivo en vector y paleta de marca~~: aplicados desde el manual
+- [ ] Autorización para publicar las fotos donde aparecen niñas y niños (ver TODO en `esto-es-redh.html`)
 - [ ] Conectar los formularios: hoy sólo validan y muestran un mensaje, no envían nada
 - [ ] Conectar la pasarela de pago (Wompi, Bold, ePayco o Mercado Pago Colombia)
 - [ ] Definir si se usa analítica y, si sí, sumar el aviso de cookies

@@ -1,0 +1,12 @@
+{
+  "name": "fundacion-redh-sitio",
+  "private": true,
+  "description": "Sitio estático de Fundación REDH. Node sólo se usa en desarrollo para generar header y footer.",
+  "scripts": {
+    "layout": "node scripts/generar-layout.mjs",
+    "layout:verificar": "node scripts/generar-layout.mjs --verificar"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

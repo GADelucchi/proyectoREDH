@@ -10,10 +10,10 @@
 
   <title>Esto es REDH | Fundación REDH</title>
   <meta name="description"
-    content="Fundación REDH nació en 2015 como una iniciativa familiar en Bogotá. Conoce nuestra historia, misión, visión, enfoques de trabajo y el equipo que la sostiene.">
+    content="Fundación REDH nació en 2015 como una iniciativa familiar en Bogotá. Conoce lo que hemos hecho, nuestra historia, misión, visión, enfoques de trabajo y el equipo que la sostiene.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Fundación REDH">
-  <meta name="theme-color" content="#12695c">
+  <meta name="theme-color" content="#29235c">
 
   <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
   <meta property="og:url" content="https://fundacionredh.org/pages/esto-es-redh.html">
   <meta property="og:title" content="Esto es REDH | Fundación REDH">
   <meta property="og:description"
-    content="Fundación REDH nació en 2015 como una iniciativa familiar en Bogotá. Conoce nuestra historia, misión, visión, enfoques de trabajo y el equipo que la sostiene.">
+    content="Fundación REDH nació en 2015 como una iniciativa familiar en Bogotá. Conoce lo que hemos hecho, nuestra historia, misión, visión, enfoques de trabajo y el equipo que la sostiene.">
   <meta property="og:image" content="https://fundacionredh.org/assets/imgs/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Sniglet&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="../assets/index.css">
 
@@ -43,44 +43,81 @@
 <body>
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
+  <!-- layout:cabecera -->
   <header class="cabecera">
     <div class="contenedor cabecera__inner">
       <a class="marca" href="../index.html">
-        <svg class="marca__logo" viewBox="0 0 40 40" role="img" aria-label="Logotipo de Fundación REDH">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".25" />
-          <path d="M20 8v10m0 0 8.5 5M20 18l-8.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          <circle cx="20" cy="7.5" r="3.5" fill="currentColor" />
-          <circle cx="29.5" cy="24" r="3.5" fill="currentColor" />
-          <circle cx="10.5" cy="24" r="3.5" fill="currentColor" />
-        </svg>
-        <span class="marca__texto">
-          <span class="marca__nombre">Fundación REDH</span>
-          <!-- TODO: confirmar con el cliente la bajada oficial y qué significa la sigla REDH -->
-          <span class="marca__bajada">Derechos humanos · Niñez y género</span>
-        </span>
-      </a>
+          <img class="marca__logo" src="../assets/imgs/logo-redh-horizontal.svg" width="227" height="67"
+            alt="Fundación REDH — Inicio">
+        </a>
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <ul class="nav__lista">
-          <li class="nav__inicio"><a class="nav__enlace" href="../index.html">Inicio</a></li>
-          <li><a class="nav__enlace" href="esto-es-redh.html">Esto es REDH</a></li>
-          <li><a class="nav__enlace" href="lo-que-nos-mueve.html">Lo que nos mueve</a></li>
-          <li><a class="nav__enlace" href="novedades.html">Novedades</a></li>
-          <li><a class="nav__enlace" href="transparencia.html">Transparencia</a></li>
-          <li><a class="nav__enlace" href="trama.html">TRAMA</a></li>
-          <li><a class="nav__enlace" href="hablemos.html">Hablemos</a></li>
+          <li class="nav__item nav__item--solo-panel"><a class="nav__enlace" href="../index.html">Inicio</a></li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="esto-es-redh.html">Esto es REDH</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-esto-es-redh"
+              aria-label="Ver secciones de Esto es REDH"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-esto-es-redh">
+              <li><a class="submenu__enlace" href="esto-es-redh.html#hemos-estado-ahi">Hemos estado ahí</a></li>
+              <li><a class="submenu__enlace" href="esto-es-redh.html#historia">Nuestra historia</a></li>
+              <li><a class="submenu__enlace" href="esto-es-redh.html#mision-vision">Misión y visión</a></li>
+              <li><a class="submenu__enlace" href="esto-es-redh.html#asi-trabajamos">Así trabajamos</a></li>
+              <li><a class="submenu__enlace" href="esto-es-redh.html#equipo">Quienes hacen REDH</a></li>
+            </ul>
+          </li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="lo-que-nos-mueve.html">Lo que nos mueve</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-lo-que-nos-mueve"
+              aria-label="Ver secciones de Lo que nos mueve"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-lo-que-nos-mueve">
+              <li><a class="submenu__enlace" href="lo-que-nos-mueve.html#crecer-con-derechos">Crecer con derechos</a></li>
+              <li><a class="submenu__enlace" href="lo-que-nos-mueve.html#vivir-sin-violencias">Vivir sin violencias</a></li>
+              <li><a class="submenu__enlace" href="lo-que-nos-mueve.html#brigadas-de-salud">Brigadas de salud</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__enlace" href="hablemos.html">Hablemos</a></li>
+          <li class="nav__item">
+            <a class="nav__enlace" href="trama.html">TRAMA</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-trama"
+              aria-label="Ver secciones de TRAMA"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-trama">
+              <li><a class="submenu__enlace" href="trama.html#que-es-trama">¿Qué es TRAMA?</a></li>
+              <li><a class="submenu__enlace" href="trama.html#como-funciona">¿Cómo funciona?</a></li>
+              <li><a class="submenu__enlace" href="trama.html#colecciones">Colecciones</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--solo-panel">
+            <a class="nav__enlace" href="sumate.html">Súmate</a>
+            <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-sumate-panel"
+              aria-label="Ver secciones de Súmate"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="submenu" id="submenu-sumate-panel">
+              <li><a class="submenu__enlace" href="sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+              <li><a class="submenu__enlace" href="sumate.html#aportar">Quiero aportar</a></li>
+              <li><a class="submenu__enlace" href="sumate.html#alianzas">Quiero proponer una alianza</a></li>
+            </ul>
+          </li>
         </ul>
-        <a class="btn btn--acento nav__cta" href="sumate.html">Súmate</a>
       </nav>
 
       <div class="cabecera__acciones">
-        <a class="btn btn--acento" href="sumate.html">Súmate</a>
+        <div class="nav__item nav__item--destacado">
+          <a class="btn btn--acento" href="sumate.html">Súmate</a>
+          <button class="submenu-boton" type="button" aria-expanded="false" aria-controls="submenu-sumate-destacado"
+              aria-label="Ver secciones de Súmate"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="submenu" id="submenu-sumate-destacado">
+              <li><a class="submenu__enlace" href="sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+              <li><a class="submenu__enlace" href="sumate.html#aportar">Quiero aportar</a></li>
+              <li><a class="submenu__enlace" href="sumate.html#alianzas">Quiero proponer una alianza</a></li>
+            </ul>
+        </div>
         <button class="menu-boton" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
           <span class="menu-boton__barras"></span>
         </button>
       </div>
     </div>
   </header>
+  <!-- /layout:cabecera -->
 
   <main id="contenido">
 
@@ -92,119 +129,115 @@
             <li aria-current="page">Esto es REDH</li>
           </ol>
         </nav>
-        <span class="antetitulo">Esto es REDH</span>
-        <h1>Todo comenzó con una pregunta: ¿cómo podemos aportar?</h1>
-        <p class="bajada">Nacimos en 2015 como una iniciativa familiar en Bogotá. Hoy trabajamos por la
-          promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres.</p>
+        <span class="antetitulo">Fundación REDH</span>
+        <h1>Esto es REDH</h1>
       </div>
     </section>
 
-    <!-- CÓMO ENTENDEMOS LOS DERECHOS HUMANOS -->
-    <section class="seccion" aria-labelledby="titulo-ddhh">
-      <div class="contenedor bloque bloque--invertido" data-revelar>
-        <div>
-          <span class="antetitulo">Nuestra mirada</span>
-          <h2 id="titulo-ddhh">Cómo entendemos los derechos humanos</h2>
-          <div class="texto-largo">
-            <p>En REDH entendemos los derechos humanos como condiciones fundamentales para que todas
-              las personas puedan vivir con dignidad, desarrollar sus capacidades y construir sus
-              propios proyectos de vida.</p>
-            <p>Son universales, están presentes en la vida cotidiana y su garantía requiere tanto del
-              compromiso del Estado como de una sociedad capaz de reconocerlos, defenderlos y
-              promoverlos.</p>
-          </div>
+    <!-- HEMOS ESTADO AHÍ · galería / memoria visual -->
+    <section class="seccion" id="hemos-estado-ahi" aria-labelledby="titulo-hemos-estado">
+      <div class="contenedor">
+        <div class="encabezado-seccion" data-revelar>
+          <span class="antetitulo">Memoria visual</span>
+          <h2 id="titulo-hemos-estado">Hemos estado ahí</h2>
+          <p class="bajada">A lo largo del camino hemos participado en talleres de derechos humanos con
+            niñas, niños y adolescentes; jornadas comunitarias de salud y cuidado; actividades
+            recreativas y pedagógicas; y acciones de atención básica en salud en distintos
+            contextos.</p>
         </div>
-        <!-- TODO: reemplazar por <img class="figura" ...> cuando lleguen las fotos del cliente -->
-        <div class="bloque__figura figura figura--ph" role="img"
-          aria-label="Espacio reservado para foto de una actividad de la fundación">
-          Foto de actividad · 1200 × 900
+
+        <!-- TODO: confirmar con la fundación que cuenta con la autorización de las familias o
+             representantes legales para publicar las fotos en las que aparecen niñas y niños
+             (Ley 1581 de 2012 y Código de la Infancia y la Adolescencia). -->
+        <div class="galeria" data-revelar>
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/01-bogota-jornada-comunitaria-recreacion.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/01-bogota-jornada-comunitaria-recreacion.jpg" alt="Niñas y niños juegan en ronda en una cancha de Bogotá" width="1200" height="900" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Bogotá</span>Jornada comunitaria de pedagogía, cuidado y recreación con niñas y niños.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/02-bogota-jornada-comunitaria-juego.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/02-bogota-jornada-comunitaria-juego.jpg" alt="Niñas y niños saltan la cuerda en el patio de un barrio de Bogotá" width="1200" height="799" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Bogotá</span>Jornada comunitaria de pedagogía, cuidado y recreación con niñas y niños.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/03-bogota-jornada-comunitaria-pedagogia.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/03-bogota-jornada-comunitaria-pedagogia.jpg" alt="Un integrante de REDH comparte una actividad con niñas y niños sentados alrededor de una mesa" width="540" height="358" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Bogotá</span>Jornada comunitaria de pedagogía, cuidado y recreación con niñas y niños.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/04-bogota-afrocuidadores-del-territorio.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/04-bogota-afrocuidadores-del-territorio.jpg" alt="Integrantes de REDH y de Afrocuidadores del Territorio conversan con participantes en un salón" width="960" height="960" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Bogotá</span>Alianza con Afrocuidadores del Territorio: jornada de fortalecimiento de capacidades.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/05-bogota-pueblo-embera-salud.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/05-bogota-pueblo-embera-salud.jpg" alt="Una profesional de la salud atiende a una niña del pueblo Embera" width="1200" height="812" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Bogotá · Pueblo Embera</span>Acción básica de salud y cuidado.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/06-risaralda-emergencia-terremoto.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/06-risaralda-emergencia-terremoto.jpg" alt="Cajas con el logo de REDH preparadas con insumos de ayuda humanitaria" width="1038" height="1200" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Risaralda</span>Atención de emergencia humanitaria por terremoto.</figcaption>
+          </figure>
+
+          <figure class="galeria__item">
+            <picture>
+              <source srcset="../assets/imgs/galeria/07-risaralda-emergencia-terremoto.webp" type="image/webp">
+              <img class="galeria__foto" src="../assets/imgs/galeria/07-risaralda-emergencia-terremoto.jpg" alt="Voluntarios de REDH cargan cajas de ayuda humanitaria en una camioneta" width="675" height="1200" loading="lazy">
+            </picture>
+            <figcaption class="galeria__epigrafe"><span class="galeria__lugar">Risaralda</span>Atención de emergencia humanitaria por terremoto.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- HISTORIA -->
+    <!-- NUESTRA HISTORIA -->
     <section class="seccion seccion--alt" id="historia" aria-labelledby="titulo-historia">
       <div class="contenedor">
         <div class="encabezado-seccion" data-revelar>
           <span class="antetitulo">Nuestra historia</span>
-          <h2 id="titulo-historia">De una idea familiar a una fundación</h2>
+          <h2 id="titulo-historia">Todo comenzó con una pregunta: ¿cómo podemos aportar?</h2>
         </div>
 
         <div class="texto-largo" data-revelar>
-          <p>La historia de Fundación REDH comenzó mucho antes de tener estatutos, un logo o una
-            estructura formal. Nació en 2015 como una iniciativa familiar, después de varios años
-            buscando espacios de voluntariado y distintas maneras de aportar a comunidades que
-            necesitaban acompañamiento.</p>
-          <p>Con el tiempo, entendimos que los distintos conocimientos, experiencias y capacidades que
-            teníamos podían ponerse al servicio de un propósito común. De allí surgió la idea de reunir
-            lo que cada persona podía aportar y transformar la voluntad de ayudar en una iniciativa
-            organizada, responsable y respetuosa de las personas y sus contextos.</p>
-          <p>Así, María Judith Mejía Arango, Iván Camilo Rodríguez Mejía, David Alejandro Rodríguez
-            Mejía y César Eduardo Rodríguez Mejía comenzaron a darle forma a REDH. Pensamos a quiénes
-            queríamos llegar, qué podía aportar cada integrante de la familia y, sobre todo, qué tipo
-            de organización queríamos construir.</p>
-
-          <h3>Los primeros pasos</h3>
-          <p>Comenzamos trabajando principalmente con niñas y niños. A través de una pequeña red de
-            familiares, amigos y personas cercanas que decidieron apoyar la iniciativa, logramos
-            realizar jornadas en comunidades de Bogotá en las que combinábamos actividades recreativas
-            con la entrega de útiles escolares, prendas de abrigo y otros apoyos.</p>
-          <p>Con el tiempo ampliamos nuestro camino. De la mano de otras organizaciones participamos en
-            brigadas de salud y jornadas comunitarias en diferentes territorios del país, llegando a
-            lugares como Palocabildo, Soacha, Acacías y Cachipay. También desarrollamos acciones de
-            atención humanitaria y cuidado en salud en contextos de concentración ciudadana,
-            manteniendo siempre una actuación independiente y centrada en las personas.</p>
-          <p>El crecimiento profesional de quienes integrábamos REDH también fue transformando nuestra
-            manera de entender el trabajo. Aprendimos que tener buenas intenciones no era suficiente:
-            era necesario escuchar, comprender los contextos, actuar responsablemente y construir
-            intervenciones cada vez más coherentes con un enfoque de derechos humanos.</p>
-
-          <h3>Una nueva etapa</h3>
-          <p>Como muchas iniciativas que nacen del voluntariado y de recursos propios, REDH atravesó
-            periodos de menor actividad. Sin embargo, la idea que le dio origen nunca desapareció.</p>
-          <p>Hoy iniciamos una nueva etapa. Con un equipo renovado y la incorporación de conocimientos
-            desde el Trabajo Social y la Antropología, concentramos nuestros esfuerzos en la promoción
-            y protección de los derechos humanos de niñas, niños y adolescentes, incorporando el
-            enfoque de género como parte fundamental de nuestra manera de trabajar.</p>
-          <p>Nuestra forma de actuar ha cambiado desde aquel 2015, pero la pregunta que nos reunió
-            sigue siendo la misma: <strong>¿cómo podemos poner lo que sabemos y lo que tenemos al
-              servicio de los demás?</strong></p>
+          <p>REDH nació en 2015 como una iniciativa familiar que buscaba poner conocimientos, tiempo y
+            capacidades al servicio de otras personas. Esa idea fue tomando forma hasta que, en 2020,
+            nos constituimos formalmente como Fundación.</p>
+          <p>En nuestros primeros años realizamos acciones puntuales con niñas, niños y comunidades,
+            participamos en jornadas de salud y acompañamos iniciativas en distintos territorios.
+            También atravesamos periodos de menor actividad.</p>
+          <p>Hoy comenzamos una nueva etapa. Tenemos un equipo renovado, una identidad más clara y dos
+            líneas que concentran nuestro trabajo: Infancia y Adolescencia, y Género. Las brigadas de
+            salud las acompañan de manera transversal.</p>
+          <p>Seguimos haciéndonos la misma pregunta que nos reunió al principio: <strong>¿cómo podemos
+              poner lo que sabemos y lo que tenemos al servicio de los demás?</strong></p>
         </div>
-
-        <ol class="linea-tiempo" data-revelar style="margin-top: clamp(2.5rem, 5vw, 4rem);">
-          <li class="hito">
-            <p class="hito__anio">2015</p>
-            <h3>Una iniciativa familiar</h3>
-            <p>Cuatro hermanos deciden organizar lo que cada uno podía aportar y empiezan a trabajar
-              con niñas y niños en comunidades de Bogotá.</p>
-          </li>
-          <li class="hito">
-            <p class="hito__anio">2015 – 2020</p>
-            <h3>Del barrio al territorio</h3>
-            <p>Jornadas recreativas y entrega de apoyos escolares; después, brigadas de salud y
-              jornadas comunitarias en Palocabildo, Soacha, Acacías y Cachipay.</p>
-          </li>
-          <li class="hito">
-            <p class="hito__anio">2020</p>
-            <h3>REDH se constituye como fundación</h3>
-            <p>El proceso de definir a quiénes llegar y qué organización construir da origen a nuestra
-              estructura, nuestra identidad y nuestros estatutos.</p>
-          </li>
-          <li class="hito">
-            <p class="hito__anio">Hoy</p>
-            <h3>Una nueva etapa</h3>
-            <p>Equipo renovado, con conocimientos desde el Trabajo Social y la Antropología, enfocado
-              en niñez, adolescencia y género.</p>
-          </li>
-        </ol>
       </div>
     </section>
 
     <!-- MISIÓN · VISIÓN -->
-    <section class="seccion" id="mision" aria-labelledby="titulo-mvv">
+    <section class="seccion" id="mision-vision" aria-labelledby="titulo-mision-vision">
       <div class="contenedor">
         <div class="encabezado-seccion" data-revelar>
-          <h2 id="titulo-mvv">Misión y visión</h2>
+          <h2 id="titulo-mision-vision">Misión y visión</h2>
         </div>
         <div class="grilla grilla--2" data-revelar>
           <article class="tarjeta">
@@ -213,9 +246,9 @@
               especial énfasis en niñas, niños, adolescentes y mujeres. Desarrollamos acciones de
               formación, prevención, acompañamiento y fortalecimiento de entornos protectores,
               promoviendo la participación, la igualdad de género y una vida libre de violencias.</p>
-            <p style="margin-top:1rem;">De manera transversal, impulsamos acciones comunitarias y
-              brigadas de salud que contribuyen al bienestar y al acceso a derechos de las poblaciones
-              con las que trabajamos.</p>
+            <p>De manera transversal, impulsamos acciones comunitarias y brigadas de salud que
+              contribuyen al bienestar y al acceso a derechos de las poblaciones con las que
+              trabajamos.</p>
           </article>
           <article class="tarjeta">
             <h3>Visión</h3>
@@ -229,289 +262,158 @@
       </div>
     </section>
 
-    <!-- HEMOS ESTADO AHÍ -->
-    <section class="seccion seccion--alt" id="trayectoria" aria-labelledby="titulo-trayectoria">
-      <div class="contenedor">
-        <div class="encabezado-seccion" data-revelar>
-          <span class="antetitulo">Trayectoria</span>
-          <h2 id="titulo-trayectoria">Hemos estado ahí</h2>
-        </div>
-        <div class="grilla grilla--2" data-revelar>
-          <article class="tarjeta">
-            <h3>Formación en derechos humanos</h3>
-            <p>Talleres de sensibilización, formación y apropiación en derechos humanos realizados en
-              instituciones educativas de Bogotá.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Jornadas de salud y odontología</h3>
-            <p>Dirigidas a población vulnerable en distintos puntos del territorio nacional.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Atención básica en salud</h3>
-            <p>Jornadas de atención durante concentraciones masivas en Bogotá, con una actuación
-              independiente y centrada en las personas.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Acompañamiento psicopedagógico</h3>
-            <p>Apoyo en psicopedagogía y fomento de la recreación y el esparcimiento.</p>
-          </article>
-        </div>
-        <!-- TODO: el cliente va a enviar las fotos de estas jornadas en un archivo aparte.
-             Al recibirlas, agregar acá una galería debajo de las tarjetas. -->
-      </div>
-    </section>
-
     <!-- ASÍ TRABAJAMOS -->
-    <section class="seccion" id="enfoques" aria-labelledby="titulo-enfoques">
+    <section class="seccion seccion--alt" id="asi-trabajamos" aria-labelledby="titulo-asi-trabajamos">
       <div class="contenedor">
         <div class="encabezado-seccion" data-revelar>
-          <span class="antetitulo">Metodología</span>
-          <h2 id="titulo-enfoques">Así trabajamos</h2>
-          <p class="bajada">Seis enfoques que atraviesan todo lo que hacemos, desde cómo elegimos un
-            territorio hasta cómo diseñamos un taller.</p>
+          <span class="antetitulo">Enfoques</span>
+          <h2 id="titulo-asi-trabajamos">Así trabajamos</h2>
+          <p class="bajada">No aplicamos la misma respuesta a todas las personas ni a todos los
+            contextos. Estos enfoques orientan nuestras decisiones:</p>
         </div>
         <div class="grilla grilla--3" data-revelar>
           <article class="tarjeta">
-            <h3>Enfoque de derechos humanos</h3>
-            <p>Reconocemos a las personas como protagonistas de sus propios procesos. Trabajamos para
-              que conozcan sus derechos, fortalezcan sus capacidades y cuenten con herramientas para
-              ejercerlos y exigir su garantía.</p>
+            <h3>Derechos humanos</h3>
+            <p>Reconocemos a cada persona como titular de derechos y protagonista de sus propios procesos.</p>
           </article>
           <article class="tarjeta">
-            <h3>Enfoque de género</h3>
-            <p>Reconocemos que las desigualdades y las violencias no afectan a todas las personas de la
-              misma manera. Incorporamos esta mirada para promover relaciones más equitativas y
-              contribuir a prevenir las violencias basadas en género.</p>
+            <h3>Género</h3>
+            <p>Identificamos desigualdades y relaciones de poder para promover condiciones más equitativas y prevenir violencias basadas en género.</p>
           </article>
           <article class="tarjeta">
-            <h3>Enfoque diferencial</h3>
-            <p>Partimos de que cada persona y comunidad tiene realidades distintas. Adaptamos nuestras
-              acciones teniendo en cuenta factores como la edad, el género, la discapacidad, la
-              pertenencia étnica y las características del contexto.</p>
+            <h3>Diferencial</h3>
+            <p>Tenemos en cuenta la edad, el género, la discapacidad, la pertenencia étnica y otras características que hacen distinta cada experiencia.</p>
           </article>
           <article class="tarjeta">
-            <h3>Enfoque participativo</h3>
-            <p>No queremos trabajar para las personas sin contar con ellas. Promovemos espacios donde
-              puedan expresar sus necesidades, aportar sus ideas y participar en la construcción de las
-              acciones que les involucran.</p>
+            <h3>Participativo</h3>
+            <p>Escuchamos antes de actuar. Buscamos que las personas participen en las decisiones y acciones que les involucran.</p>
           </article>
           <article class="tarjeta">
-            <h3>Enfoque territorial y comunitario</h3>
-            <p>Cada territorio tiene sus propias dinámicas, necesidades y capacidades. Buscamos
-              comprender primero el contexto y trabajar desde las realidades y recursos de cada
-              comunidad, evitando respuestas idénticas para situaciones diferentes.</p>
+            <h3>Territorial y comunitario</h3>
+            <p>Partimos de las realidades, capacidades y necesidades de cada territorio y comunidad.</p>
           </article>
           <article class="tarjeta">
-            <h3>Enfoque de prevención y protección</h3>
-            <p>Buscamos actuar antes de que las vulneraciones ocurran o se repitan. Fortalecemos
-              conocimientos, capacidades y entornos protectores que permitan reconocer riesgos,
-              prevenir violencias y saber cómo actuar frente a ellas.</p>
+            <h3>Prevención y protección</h3>
+            <p>Fortalecemos conocimientos, capacidades y entornos que ayuden a reconocer riesgos, prevenir violencias y saber cómo actuar.</p>
           </article>
         </div>
       </div>
     </section>
 
     <!-- QUIENES HACEN REDH -->
-    <section class="seccion seccion--alt" id="equipo" aria-labelledby="titulo-equipo">
+    <section class="seccion" id="equipo" aria-labelledby="titulo-equipo">
       <div class="contenedor">
         <div class="encabezado-seccion" data-revelar>
           <span class="antetitulo">Equipo</span>
           <h2 id="titulo-equipo">Quienes hacen REDH</h2>
-          <p class="bajada">Un equipo interdisciplinario: antropología, trabajo social, psicología,
-            derecho, comunicación y diseño.</p>
+          <p class="bajada">REDH se construye con personas de distintas disciplinas que aportan sus
+            conocimientos a un propósito común.</p>
         </div>
 
-        <!-- TODO: fotos del equipo (600 × 600). Confirmar que cada persona autoriza
-             que se publique su nombre, su cargo y su foto. -->
         <div class="grilla grilla--3" data-revelar>
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de David Alejandro Rodríguez Mejía">Foto · 600 × 600</div>
             <h3 class="persona__nombre">David Alejandro Rodríguez Mejía <span class="persona__apodo">(Alejo)</span></h3>
             <p class="persona__rol">Cofundador · Presidente</p>
-            <p>Antropólogo de la Universidad Javeriana, especialista en la defensa de los derechos
-              humanos de la Universidad Santo Tomás de Aquino. Cocreó esta fundación junto con sus
-              hermanos porque cree que el conocimiento tiene sentido cuando se comparte. Le apasiona
-              conocer Colombia y su diversidad.</p>
+            <p>Soy antropólogo de la Universidad Javeriana, especialista en la defensa de los derechos humanos de la Universidad Santo Tomás de Aquino. Cocreé esta fundación junto con mis hermanos porque creo en que el conocimiento tiene sentido cuando se comparte. La posibilidad de poner a disposición mi conocimiento y mi privilegio para construir país me motiva cada día a seguir trabajando por esto. Me apasiona conocer Colombia y su diversidad.</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de María Paula Ospina Hostos">Foto · 600 × 600</div>
             <h3 class="persona__nombre">María Paula Ospina Hostos <span class="persona__apodo">(Pau)</span></h3>
             <p class="persona__rol">Directora General</p>
-            <p>Trabajadora Social, Especialista en Infancia y Adolescencia y maestranda en Estudios de
-              Género. Cree en cuestionar lo establecido e incomodar cuando es necesario, y está
-              convencida de que acompañar y cuidar también son formas de hacer revolución.</p>
+            <p>Soy Trabajadora Social, Especialista en Infancia y Adolescencia y Maestranda en Estudios de Género. Feminista hasta los huesos, y esa mirada atraviesa mi manera de entender el mundo, las relaciones y el poder. Creo en cuestionar lo establecido e incomodar cuando es necesario, y estoy convencida de que acompañar y cuidar también son formas de hacer revolución. Me apasionan la naturaleza y los animales, y encuentro en la música y el baile una forma diaria de celebrar, pero también de resistir.</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Iván Camilo Rodríguez Mejía">Foto · 600 × 600</div>
             <h3 class="persona__nombre">Iván Camilo Rodríguez Mejía</h3>
             <p class="persona__rol">Cofundador · Oficial Psicosocial</p>
-            <p>Psicólogo con énfasis en Psicología Social de la Javeriana. Desde su rol psicosocial se
-              ha dedicado a generar proyectos para diversas comunidades, aportando a sus necesidades
-              desde diferentes miradas y acompañando de cerca sus procesos.</p>
+            <p>Soy Psicólogo con énfasis en Psicología Social de la Javeriana. Desde muy niño supe que quería trabajar para la gente y aportar a mejorar la vida de quienes más lo necesitan. Desde mi rol psicosocial, me he dedicado a generar proyectos para diversas comunidades, con el fin de aportar a sus necesidades desde diferentes miradas y acompañar de cerca sus procesos.</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de María Judith Mejía Arango">Foto · 600 × 600</div>
             <h3 class="persona__nombre">María Judith Mejía Arango <span class="persona__apodo">(MJ)</span></h3>
             <p class="persona__rol">Cofundadora · Secretaria General</p>
-            <!-- TODO: pedirle a MJ una bio de dos o tres líneas -->
+            <p>Nací hace casi 58 años con una disposición inmensa de cuidar, acompañar, servir y proteger; me gradué como ingeniera mecánica. Pero más allá de mi formación profesional, hay algo que considero esencial en mí: mi sensibilidad frente al ser humano y frente a todos los seres vivos. Me considero una mujer solidaria, perseverante, responsable, leal y comprometida. Creo en la dignidad de cada ser humano, en el respeto, en la igualdad y en la posibilidad de construir una sociedad más justa y más humana.</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Natalia Sánchez Mejía">Foto · 600 × 600</div>
             <h3 class="persona__nombre">Natalia Sánchez Mejía</h3>
             <p class="persona__rol">Oficial Jurídica</p>
-            <!-- TODO: pedirle a Natalia una bio de dos o tres líneas -->
+            <p>Soy abogada, especialista en Derechos Humanos y Derecho Internacional Humanitario. Mi trabajo está enfocado en la protección de derechos y el acompañamiento a personas y comunidades en contextos humanitarios. Creo en cuestionar lo establecido cuando es necesario y en que el conocimiento solo tiene sentido cuando se pone al servicio de las personas. Me apasionan los territorios, conocer sus historias y trabajar por una Colombia más justa e inclusiva.</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Sebastián Zamudio">Foto · 600 × 600</div>
-            <h3 class="persona__nombre">Sebastián Zamudio <span class="persona__apodo">(Sebas)</span></h3>
-            <p class="persona__rol">Realizador Audiovisual</p>
-            <!-- TODO: bio -->
+            <h3 class="persona__nombre">Juana Díaz Páramo</h3>
+            <p class="persona__rol">Diseñadora e ilustradora</p>
           </article>
 
           <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Patricia Pedraza">Foto · 600 × 600</div>
-            <h3 class="persona__nombre">Patricia Pedraza <span class="persona__apodo">(Pato)</span></h3>
-            <p class="persona__rol">Realizadora Audiovisual</p>
-            <!-- TODO: bio -->
-          </article>
-
-          <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Manuela Gómez">Foto · 600 × 600</div>
-            <h3 class="persona__nombre">Manuela Gómez <span class="persona__apodo">(Manu)</span></h3>
-            <p class="persona__rol">Administradora de Redes Sociales</p>
-            <!-- TODO: bio -->
-          </article>
-
-          <article class="persona tarjeta tarjeta--plana">
-            <div class="figura figura--ph persona__foto" role="img"
-              aria-label="Foto de Juana Díaz">Foto · 600 × 600</div>
-            <h3 class="persona__nombre">Juana Díaz</h3>
-            <p class="persona__rol">Diseñadora</p>
-            <!-- TODO: bio -->
+            <h3 class="persona__nombre">Gastón Alejo Delucchi</h3>
+            <p class="persona__rol">Desarrollador Web · Oficial IT</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ALIADOS -->
-    <section class="seccion" aria-labelledby="titulo-aliados">
-      <div class="contenedor">
-        <div class="encabezado-seccion">
-          <h2 id="titulo-aliados">Con quiénes trabajamos</h2>
-          <p class="bajada">TODO: el cliente tiene que entregar los logos y distinguir aliados, financiadores y organismos públicos. Si no hay aliados para mostrar, esta sección se elimina.</p>
-        </div>
-        <div class="aliados">
-          <div class="aliado">Logo aliado 1</div>
-          <div class="aliado">Logo aliado 2</div>
-          <div class="aliado">Logo aliado 3</div>
-          <div class="aliado">Logo aliado 4</div>
-          <div class="aliado">Logo aliado 5</div>
-          <div class="aliado">Logo aliado 6</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="seccion cta">
+    <section class="seccion cta superficie-oscura">
       <div class="contenedor cta__inner">
         <div>
-          <h2>Súmate a la red</h2>
-          <p>Puedes colaborar con una donación, como voluntario/a o desde tu organización.</p>
+          <h2>Hay muchas formas de hacer REDH</h2>
+          <p>Puedes aportar, participar como voluntaria o voluntario, proponer una alianza o
+            ayudarnos a ampliar esta red.</p>
         </div>
         <div class="acciones">
-          <a class="btn btn--acento" href="sumate.html#donar">Donar</a>
-          <a class="btn btn--fantasma-claro" href="hablemos.html">Contactanos</a>
+          <a class="btn btn--acento" href="sumate.html">Quiero sumarme</a>
+          <a class="btn btn--fantasma-claro" href="hablemos.html">Escríbenos</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="pie">
+  <!-- layout:pie -->
+  <footer class="pie superficie-oscura">
     <div class="contenedor">
       <div class="pie__grid">
         <div>
           <a class="marca" href="../index.html">
-            <svg class="marca__logo" viewBox="0 0 40 40" role="img" aria-label="Logotipo de Fundación REDH">
-              <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".25" />
-              <path d="M20 8v10m0 0 8.5 5M20 18l-8.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <circle cx="20" cy="7.5" r="3.5" fill="currentColor" />
-              <circle cx="29.5" cy="24" r="3.5" fill="currentColor" />
-              <circle cx="10.5" cy="24" r="3.5" fill="currentColor" />
-            </svg>
-            <span class="marca__texto">
-              <span class="marca__nombre">Fundación REDH</span>
-              <span class="marca__bajada">Derechos humanos · Niñez y género</span>
-            </span>
-          </a>
-          <p class="pie__texto">
-            Trabajamos por la promoción y protección de los derechos humanos de niñas,
-            niños, adolescentes y mujeres, en Bogotá y en distintos territorios de
-            Colombia.
-          </p>
+          <img class="marca__logo" src="../assets/imgs/logo-redh-horizontal-blanco.svg" width="227" height="67"
+            alt="Fundación REDH — Inicio">
+        </a>
+          <p class="pie__lema">Protección humanitaria</p>
+          <p class="pie__texto">Trabajamos por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres, en Bogotá y en distintos territorios de Colombia.</p>
           <div class="redes">
-            <!-- TODO: reemplazar por los perfiles reales -->
-            <a href="#" aria-label="Instagram de Fundación REDH"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg></a>
-            <a href="#" aria-label="Facebook de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z" />
-              </svg></a>
-            <a href="#" aria-label="LinkedIn de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path
-                  d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.3 20.5h3.3V8.9H3.3v11.6zM9.3 8.9h3.16v1.6h.05c.44-.83 1.5-1.7 3.1-1.7 3.3 0 3.9 2.17 3.9 5v6.7h-3.3v-5.9c0-1.4 0-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1v6h-3.3V8.9z" />
-              </svg></a>
-            <a href="#" aria-label="YouTube de Fundación REDH"><svg viewBox="0 0 24 24" fill="currentColor"
-                aria-hidden="true">
-                <path
-                  d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.2V8.8l5.2 3.2-5.2 3.2z" />
-              </svg></a>
+            <a href="#" aria-label="Instagram de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="WhatsApp de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8.3 19z"/><path d="M9 8.8c0 3 2.6 6 6 6.4l1.2-1.4-1.9-1-.9.8a4.5 4.5 0 0 1-2.4-2.4l.8-.9-1-1.9z" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:contacto@fundacionredh.org" aria-label="Correo de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
           </div>
         </div>
 
         <div>
-          <h2 class="pie__titulo">La fundación</h2>
+          <h2 class="pie__titulo"><a href="esto-es-redh.html">La fundación</a></h2>
           <ul class="pie__lista">
-            <li><a href="esto-es-redh.html">Esto es REDH</a></li>
+            <li><a href="esto-es-redh.html#hemos-estado-ahi">Hemos estado ahí</a></li>
             <li><a href="esto-es-redh.html#historia">Nuestra historia</a></li>
-            <li><a href="esto-es-redh.html#enfoques">Así trabajamos</a></li>
+            <li><a href="esto-es-redh.html#mision-vision">Misión y visión</a></li>
+            <li><a href="esto-es-redh.html#asi-trabajamos">Así trabajamos</a></li>
             <li><a href="esto-es-redh.html#equipo">Quienes hacen REDH</a></li>
           </ul>
         </div>
 
         <div>
-          <h2 class="pie__titulo">Qué hacemos</h2>
+          <h2 class="pie__titulo"><a href="lo-que-nos-mueve.html">Lo que nos mueve</a></h2>
           <ul class="pie__lista">
             <li><a href="lo-que-nos-mueve.html#crecer-con-derechos">Crecer con derechos</a></li>
             <li><a href="lo-que-nos-mueve.html#vivir-sin-violencias">Vivir sin violencias</a></li>
-            <li><a href="lo-que-nos-mueve.html#brigadas">Brigadas de salud</a></li>
-            <li><a href="novedades.html">Novedades</a></li>
+            <li><a href="lo-que-nos-mueve.html#brigadas-de-salud">Brigadas de salud</a></li>
           </ul>
         </div>
 
         <div>
-          <h2 class="pie__titulo">Súmate</h2>
+          <h2 class="pie__titulo"><a href="sumate.html">Súmate</a></h2>
           <ul class="pie__lista">
-            <li><a href="sumate.html#donar">Donar</a></li>
-            <li><a href="sumate.html#voluntariado">Voluntariado</a></li>
-            <li><a href="sumate.html#alianzas">Alianzas y empresas</a></li>
+            <li><a href="sumate.html#voluntariado">Quiero ser voluntaria/o</a></li>
+            <li><a href="sumate.html#aportar">Quiero aportar</a></li>
+            <li><a href="sumate.html#alianzas">Quiero proponer una alianza</a></li>
             <li><a href="trama.html">TRAMA</a></li>
             <li><a href="hablemos.html">Hablemos</a></li>
           </ul>
@@ -519,12 +421,12 @@
       </div>
 
       <div class="pie__legal">
-        <!-- TODO: NIT y datos de registro reales (Cámara de Comercio de Bogotá) -->
         <p>© <span data-anio>2026</span> Fundación REDH · Entidad sin ánimo de lucro · NIT 000.000.000-0</p>
         <p>Bogotá D.C., Colombia</p>
       </div>
     </div>
   </footer>
+  <!-- /layout:pie -->
 
   <script src="../assets/index.js" defer></script>
 </body>
