@@ -14,6 +14,11 @@
  * Cada página marca dónde va cada bloque con un par de comentarios:
  *   <!-- layout:cabecera --> ... <!-- /layout:cabecera -->
  *   <!-- layout:pie -->      ... <!-- /layout:pie -->
+ *
+ * Además completa el href de todo enlace con data-canal (ver
+ * scripts/layout/canales.mjs), así el número de WhatsApp y las redes se
+ * cambian en un solo lugar:
+ *   <a class="btn btn--whatsapp" data-canal="whatsapp" data-mensaje="Hola…" href="">
  */
 
 import { readdir, readFile, writeFile } from 'node:fs/promises';
@@ -22,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 
 import { PAGINAS } from './layout/navegacion.mjs';
 import { renderCabecera, renderPie } from './layout/plantillas.mjs';
+import { construirUrlCanal, faltaNumeroWhatsapp } from './layout/canales.mjs';
 
 const RAIZ_SITIO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CARPETAS_CON_PAGINAS = ['.', 'pages'];
@@ -75,6 +81,19 @@ function reemplazarBloques(html, rutaPagina) {
   return resultado;
 }
 
+const PATRON_ENLACE_DE_CANAL = /<a\b[^>]*\bdata-canal="([a-z]+)"[^>]*>/g;
+const PATRON_MENSAJE = /\bdata-mensaje="([^"]*)"/;
+const PATRON_HREF = /\bhref="[^"]*"/;
+
+/** Reescribe el href de los enlaces marcados con data-canal="...". */
+function actualizarEnlacesDeCanales(html) {
+  return html.replace(PATRON_ENLACE_DE_CANAL, (etiqueta, idCanal) => {
+    const mensaje = etiqueta.match(PATRON_MENSAJE)?.[1];
+    const href = `href="${construirUrlCanal(idCanal, mensaje)}"`;
+    return PATRON_HREF.test(etiqueta) ? etiqueta.replace(PATRON_HREF, href) : etiqueta.replace('<a', `<a ${href}`);
+  });
+}
+
 /** Comprueba que cada ancla de la configuración exista como id en su página. */
 async function verificarAnclas() {
   const errores = [];
@@ -97,7 +116,7 @@ async function main() {
   for (const rutaPagina of paginas) {
     const rutaAbsoluta = path.join(RAIZ_SITIO, rutaPagina);
     const original = await readFile(rutaAbsoluta, 'utf8');
-    const generado = reemplazarBloques(original, rutaPagina);
+    const generado = actualizarEnlacesDeCanales(reemplazarBloques(original, rutaPagina));
 
     if (generado === original) continue;
     desactualizadas.push(rutaPagina);
@@ -106,6 +125,11 @@ async function main() {
 
   const erroresAnclas = await verificarAnclas();
   erroresAnclas.forEach((error) => console.error(`✗ ${error}`));
+
+  // aviso, no error: el sitio funciona igual (wa.me deja elegir el contacto)
+  if (faltaNumeroWhatsapp()) {
+    console.warn('⚠ Falta el número de WhatsApp en scripts/layout/navegacion.mjs → CANALES.whatsapp.numero');
+  }
 
   if (modoVerificar) {
     desactualizadas.forEach((pagina) => console.error(`✗ ${pagina}: header/footer desactualizado (correr npm run layout)`));

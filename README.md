@@ -47,6 +47,7 @@ proyectoREDH/
 │   ├── generar-layout.mjs    Escribe header y footer en cada HTML (npm run layout)
 │   └── layout/
 │       ├── navegacion.mjs    Fuente única del menú, submenús, footer y canales
+│       ├── canales.mjs       Arma los enlaces de WhatsApp, Instagram y correo
 │       └── plantillas.mjs    HTML del header y del footer
 ├── package.json              Sólo scripts de desarrollo, sin dependencias
 ├── robots.txt
@@ -165,6 +166,24 @@ Node se usa sólo en la máquina de desarrollo y sin dependencias (no hay
 necesita build ni servidor. Para una página nueva, copiar una existente
 (ya trae los marcadores) y correr `npm run layout`.
 
+### Botones de WhatsApp, Instagram y correo
+
+Los enlaces a los canales no llevan la URL escrita a mano: se marcan con
+`data-canal` y `npm run layout` completa el `href` desde `CANALES` en
+`scripts/layout/navegacion.mjs`. Para WhatsApp se puede sumar un mensaje:
+
+```html
+<a class="btn btn--whatsapp" data-canal="whatsapp"
+  data-mensaje="Hola, quiero ser voluntaria/o de Fundación REDH." href=""
+  target="_blank" rel="noopener">Quiero hacer REDH</a>
+```
+
+Mientras `CANALES.whatsapp.numero` esté vacío, el script avisa y el enlace abre
+WhatsApp dejando elegir el contacto. Al cargar el número, correr `npm run layout`.
+
+No hay formularios: sin backend no había a dónde enviar los datos, así que
+voluntariado, aportes y contacto van por WhatsApp.
+
 Los submenús se abren con *hover* y foco en escritorio, y con el botón de
 flecha (táctil y teclado); `Escape` los cierra. En el panel móvil funcionan como
 acordeón. Esa lógica está en el bloque "3 bis" de `assets/index.js`.
@@ -235,10 +254,11 @@ elementos recortados y sin errores de JS en ninguna página.
 - [ ] Contenido que sigue faltando (ver `docs/contenido-pendiente.md`) — buscar `TODO`
 - [x] ~~Dominio~~: `fundacionredh.org`, confirmado y ya aplicado en canonical, Open Graph, `robots.txt` y `sitemap.xml`
 - [ ] Subdominio de TRAMA (lo decide el cliente: `.store` o `.org`) y su plataforma de e-commerce
-- [ ] `assets/imgs/og-image.jpg` (1200 × 630) para cuando se comparta en redes
+- [x] ~~`assets/imgs/og-image.jpg`~~ (1200 × 630, logo principal). Si se cambia, renombrarlo: WhatsApp y Facebook cachean la vista previa por URL
 - [x] ~~Logo definitivo en vector y paleta de marca~~: aplicados desde el manual
 - [ ] Autorización para publicar las fotos donde aparecen niñas y niños (ver TODO en `esto-es-redh.html`)
-- [ ] Conectar los formularios: hoy sólo validan y muestran un mensaje, no envían nada
-- [ ] Conectar la pasarela de pago (Wompi, Bold, ePayco o Mercado Pago Colombia)
+- [x] ~~Formularios sin destino~~: reemplazados por botones de WhatsApp
+- [ ] Número de WhatsApp en `CANALES.whatsapp.numero` (y Instagram)
+- [ ] Pasarela de donaciones (la fundación evalúa Afrus). El botón "Quiero aportar" de Súmate hoy lleva a Hablemos
 - [ ] Definir si se usa analítica y, si sí, sumar el aviso de cookies
 - [ ] Página de política de privacidad (la referencian los formularios)

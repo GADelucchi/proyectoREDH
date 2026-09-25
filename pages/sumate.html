@@ -26,6 +26,7 @@
   <meta property="og:image" content="https://fundacionredh.org/assets/imgs/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo de Fundación REDH">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Íconos. Al cambiarlos, renombrar los archivos: los navegadores guardan el
@@ -50,8 +51,8 @@
   <!-- layout:cabecera -->
   <header class="cabecera">
     <div class="contenedor cabecera__inner">
-      <a class="marca" href="../index.html">
-          <img class="marca__logo" src="../assets/imgs/logo-redh-horizontal.svg" width="227" height="67"
+      <a class="marca marca--cabecera" href="../index.html">
+          <img class="marca__logo" src="../assets/imgs/logo-redh.svg" width="192" height="192"
             alt="Fundación REDH — Inicio">
         </a>
 
@@ -142,129 +143,45 @@
 
     <!-- QUIERO SER VOLUNTARIA/O -->
     <section class="seccion" id="voluntariado" aria-labelledby="titulo-voluntariado">
-      <div class="contenedor bloque bloque--arriba">
-        <div>
-          <span class="antetitulo">Voluntariado</span>
-          <h2 id="titulo-voluntariado">Quiero ser voluntaria/o</h2>
-          <p class="bajada">Estamos construyendo una red de personas técnicas y profesionales que
-            quieran aportar sus conocimientos a las actividades de REDH.</p>
+      <div class="contenedor">
+        <span class="antetitulo">Voluntariado</span>
+        <h2 id="titulo-voluntariado">Quiero ser voluntaria/o</h2>
+        <p class="bajada">Estamos construyendo una red de personas técnicas y profesionales que
+          quieran aportar sus conocimientos a las actividades de REDH.</p>
+        <div class="acciones">
+          <!-- el href lo completa `npm run layout` a partir de data-canal -->
+          <a class="btn btn--whatsapp" data-canal="whatsapp"
+            data-mensaje="Hola, quiero ser voluntaria/o de Fundación REDH." href="https://wa.me/?text=Hola%2C%20quiero%20ser%20voluntaria%2Fo%20de%20Fundaci%C3%B3n%20REDH."
+            target="_blank" rel="noopener">Quiero hacer REDH</a>
         </div>
-
-        <form class="formulario" data-formulario aria-labelledby="titulo-form-vol">
-          <h3 id="titulo-form-vol">Tus datos</h3>
-
-          <div class="campos-2">
-            <div class="campo">
-              <label for="vol-nombre">Nombre y apellido</label>
-              <input id="vol-nombre" name="nombre" type="text" autocomplete="name" required>
-              <p class="campo__error" hidden></p>
-            </div>
-            <div class="campo">
-              <label for="vol-email">Correo electrónico</label>
-              <input id="vol-email" name="email" type="email" autocomplete="email" required>
-              <p class="campo__error" hidden></p>
-            </div>
-          </div>
-
-          <div class="campos-2">
-            <div class="campo">
-              <label for="vol-tel">Teléfono <span class="campo__ayuda">(opcional)</span></label>
-              <input id="vol-tel" name="telefono" type="tel" autocomplete="tel">
-            </div>
-            <div class="campo">
-              <label for="vol-area">Área de interés</label>
-              <select id="vol-area" name="area" required>
-                <option value="">Elige una opción</option>
-                <option>Crecer con derechos (infancia y adolescencia)</option>
-                <option>Vivir sin violencias (género)</option>
-                <option>Brigadas de salud</option>
-                <option>Comunicación y diseño</option>
-                <option>Otra</option>
-              </select>
-              <p class="campo__error" hidden></p>
-            </div>
-          </div>
-
-          <div class="campo">
-            <label for="vol-mensaje">Cuéntanos qué conocimientos quieres aportar</label>
-            <textarea id="vol-mensaje" name="mensaje" required></textarea>
-            <p class="campo__error" hidden></p>
-          </div>
-
-          <p class="formulario__aviso" data-aviso hidden></p>
-          <button class="btn btn--primario btn--bloque" type="submit">Quiero hacer REDH</button>
-        </form>
       </div>
     </section>
 
     <!-- QUIERO APORTAR -->
     <section class="seccion seccion--alt" id="aportar" aria-labelledby="titulo-aportar">
-      <div class="contenedor bloque bloque--invertido bloque--arriba">
-        <div>
-          <span class="antetitulo">Aportes</span>
-          <h2 id="titulo-aportar">Quiero aportar</h2>
-          <div class="texto-largo">
-            <p class="bajada">Tu aporte contribuye a sostener las acciones de promoción y protección
-              de derechos que REDH desarrolla y empieza a consolidar en esta nueva etapa.</p>
-            <!-- TODO: completar los medios de pago cuando la fundación los confirme -->
-            <h3>Otras formas de aportar</h3>
-            <ul>
-              <li>Transferencia bancaria — banco, tipo y número de cuenta: TODO</li>
-              <li>Nequi / Daviplata — número: TODO</li>
-              <li>PSE (débito desde tu banco) — TODO</li>
-              <li>Aportes en especie — <a href="hablemos.html">escríbenos</a></li>
-            </ul>
-          </div>
+      <div class="contenedor">
+        <span class="antetitulo">Aportes</span>
+        <h2 id="titulo-aportar">Quiero aportar</h2>
+        <div class="texto-largo">
+          <p class="bajada">Tu aporte contribuye a sostener las acciones de promoción y protección
+            de derechos que REDH desarrolla y empieza a consolidar en esta nueva etapa.</p>
+          <!-- TODO: completar los medios de pago cuando la fundación los confirme -->
+          <h3>Formas de aportar</h3>
+          <ul>
+            <li>Transferencia bancaria — banco, tipo y número de cuenta: TODO</li>
+            <li>Nequi / Daviplata — número: TODO</li>
+            <li>PSE (débito desde tu banco) — TODO</li>
+            <li>Aportes en especie — <a href="hablemos.html">escríbenos</a></li>
+          </ul>
         </div>
-
-        <!-- TODO: conectar con la pasarela de pago elegida. Para una ESAL en Colombia
-             las opciones habituales son Wompi (Bancolombia), Bold, ePayco o Mercado Pago
-             Colombia, todas con soporte de PSE, Nequi y tarjetas. Hay que definir cuál se
-             usa y a nombre de quién queda la cuenta. Hoy el formulario no procesa pagos. -->
-        <form class="formulario" data-formulario aria-labelledby="titulo-form-donar">
-          <h3 id="titulo-form-donar">Datos de tu aporte</h3>
-
-          <fieldset style="border:0;">
-            <legend class="campo__ayuda" style="margin-bottom:.5rem;">Frecuencia</legend>
-            <div class="montos">
-              <button class="monto" type="button" aria-pressed="true" data-monto="">Mensual</button>
-              <button class="monto" type="button" aria-pressed="false" data-monto="">Por única vez</button>
-            </div>
-          </fieldset>
-
-          <div class="campo">
-            <label for="monto-otro">Monto (COP)</label>
-            <div class="montos" data-destino="monto-otro" style="margin-bottom:.6rem;">
-              <button class="monto" type="button" aria-pressed="false" data-monto="3000">$3.000</button>
-              <button class="monto" type="button" aria-pressed="false" data-monto="6000">$6.000</button>
-              <button class="monto" type="button" aria-pressed="false" data-monto="12000">$12.000</button>
-            </div>
-            <input id="monto-otro" name="monto" type="number" min="500" step="100" inputmode="numeric"
-              placeholder="Otro monto" required>
-            <p class="campo__error" hidden></p>
-          </div>
-
-          <div class="campos-2">
-            <div class="campo">
-              <label for="donante-nombre">Nombre y apellido</label>
-              <input id="donante-nombre" name="nombre" type="text" autocomplete="name" required>
-              <p class="campo__error" hidden></p>
-            </div>
-            <div class="campo">
-              <label for="donante-email">Correo electrónico</label>
-              <input id="donante-email" name="email" type="email" autocomplete="email" required>
-              <p class="campo__error" hidden></p>
-            </div>
-          </div>
-
-          <div class="campo campo--fila">
-            <input id="donante-ok" name="acepta" type="checkbox" required>
-            <label for="donante-ok">Acepto que me contacten y la política de privacidad.</label>
-          </div>
-
-          <p class="formulario__aviso" data-aviso hidden></p>
-          <button class="btn btn--acento btn--bloque" type="submit">Quiero aportar</button>
-        </form>
+        <div class="acciones">
+          <!-- TODO: cuando la fundación active su pasarela de donaciones (Afrus u otra),
+               este botón puede apuntar a la página de donación que genere la plataforma.
+               Mientras tanto abre WhatsApp para coordinar el aporte. -->
+          <a class="btn btn--whatsapp" data-canal="whatsapp"
+            data-mensaje="Hola, quiero hacer un aporte a Fundación REDH." href="https://wa.me/?text=Hola%2C%20quiero%20hacer%20un%20aporte%20a%20Fundaci%C3%B3n%20REDH."
+            target="_blank" rel="noopener">Quiero aportar</a>
+        </div>
       </div>
     </section>
 
@@ -291,7 +208,7 @@
     <div class="contenedor">
       <div class="pie__grid">
         <div>
-          <a class="marca" href="../index.html">
+          <a class="marca marca--pie" href="../index.html">
           <img class="marca__logo" src="../assets/imgs/logo-redh-horizontal-blanco.svg" width="227" height="67"
             alt="Fundación REDH — Inicio">
         </a>
@@ -299,7 +216,7 @@
           <p class="pie__texto">Trabajamos por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres, en Bogotá y en distintos territorios de Colombia.</p>
           <div class="redes">
             <a href="#" aria-label="Instagram de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="WhatsApp de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8.3 19z"/><path d="M9 8.8c0 3 2.6 6 6 6.4l1.2-1.4-1.9-1-.9.8a4.5 4.5 0 0 1-2.4-2.4l.8-.9-1-1.9z" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://wa.me/?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20Fundaci%C3%B3n%20REDH." aria-label="WhatsApp de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8.3 19z"/><path d="M9 8.8c0 3 2.6 6 6 6.4l1.2-1.4-1.9-1-.9.8a4.5 4.5 0 0 1-2.4-2.4l.8-.9-1-1.9z" fill="currentColor" stroke="none"/></svg></a>
             <a href="mailto:contacto@fundacionredh.org" aria-label="Correo de Fundación REDH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></a>
           </div>
         </div>

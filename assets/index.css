@@ -47,6 +47,11 @@
 
   --color-secundario: var(--marca-violeta);
 
+  /* Colores de terceros (no son de la marca REDH) */
+  --color-whatsapp: #107c41;
+  --color-whatsapp-hover: #0b5e31;
+  --icono-whatsapp: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.3c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4l-.5-.3-1.9-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.5l-.9-2.1c-.2-.5-.4-.4-.6-.4h-.5z'/%3E%3C/svg%3E");
+
   --color-linea: rgba(41, 35, 92, 0.16);
   --color-linea-tenue: rgba(41, 35, 92, 0.08);
 
@@ -89,7 +94,7 @@
   --ancho-texto: 68ch;
 
   /* alto real del header; lo actualiza assets/index.js */
-  --cabecera-h: 76px;
+  --cabecera-h: 80px;
 }
 
 *,
@@ -408,6 +413,27 @@ h1 + .bajada {
   background: var(--color-acento-hover);
 }
 
+/* Botón de WhatsApp. Verde oscurecido respecto del de la marca WhatsApp
+   (#25d366 da 2:1 con texto blanco); este llega a 5,3:1. El ícono va como
+   máscara CSS para no repetir el SVG en cada botón. */
+.btn--whatsapp {
+  background: var(--color-whatsapp);
+  color: #fff;
+}
+
+.btn--whatsapp:hover {
+  background: var(--color-whatsapp-hover);
+}
+
+.btn--whatsapp::before {
+  content: "";
+  width: 1.15em;
+  height: 1.15em;
+  background: currentColor;
+  -webkit-mask: var(--icono-whatsapp) center / contain no-repeat;
+  mask: var(--icono-whatsapp) center / contain no-repeat;
+}
+
 .btn--linea {
   border-color: var(--color-linea);
   background: transparent;
@@ -498,7 +524,7 @@ h1 + .bajada {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 76px;
+  min-height: 80px;
 }
 
 .marca {
@@ -509,13 +535,18 @@ h1 + .bajada {
   flex-shrink: 0;
 }
 
-/* logo horizontal del manual: isotipo + palabra REDH (proporción 3,37:1) */
 .marca__logo {
   width: auto;
-  height: 44px;
 }
 
-.pie .marca__logo {
+/* Header: logo principal del manual (cuadrado, con REDH dentro de las formas).
+   Por debajo de ~56 px la palabra deja de leerse, así que no se achica más. */
+.marca--cabecera .marca__logo {
+  height: 64px;
+}
+
+/* Pie: versión horizontal en blanco (proporción 3,37:1) */
+.marca--pie .marca__logo {
   height: 52px;
 }
 
@@ -822,8 +853,8 @@ h1 + .bajada {
   .cabecera__acciones .btn {
     display: none;
   }
-  .marca__logo {
-    height: 38px;
+  .marca--cabecera .marca__logo {
+    height: 56px;
   }
 }
 
@@ -1357,162 +1388,6 @@ h1 + .bajada {
 
 .tabla tr:last-child td {
   border-bottom: 0;
-}
-
-/* ==========================================================================
-   Formularios
-   ========================================================================== */
-
-.formulario {
-  min-width: 0;
-  display: grid;
-  gap: 1.1rem;
-  background: #fff;
-  border: 1px solid var(--color-linea-tenue);
-  border-radius: var(--radio);
-  padding: clamp(1.4rem, 3vw, 2.2rem);
-  box-shadow: var(--sombra);
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.campo label {
-  font-size: 0.88rem;
-  font-weight: var(--peso-medio);
-}
-
-.campo__ayuda {
-  font-size: 0.8rem;
-  color: var(--color-texto-suave);
-  font-weight: var(--peso-liviano);
-}
-
-.campo input,
-.campo select,
-.campo textarea {
-  /* sin esto el ancho intrínseco del control (size/cols por defecto) manda
-     sobre el del formulario y lo desborda en pantallas angostas */
-  width: 100%;
-  min-width: 0;
-  padding: 0.72rem 0.9rem;
-  border: 1px solid var(--color-linea);
-  border-radius: var(--radio-chico);
-  background: var(--color-fondo);
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-/* el width:100% de arriba estiraba también las casillas y los radios: para
-   ellos vale lo contrario, un tamaño fijo y cómodo de tocar */
-.campo input[type="checkbox"],
-.campo input[type="radio"] {
-  /* 24 px es el mínimo de área de toque de la WCAG 2.5.8 */
-  width: 1.5rem;
-  height: 1.5rem;
-  flex: 0 0 auto;
-  padding: 0;
-  accent-color: var(--color-primario);
-  cursor: pointer;
-}
-
-.campo--fila label {
-  cursor: pointer;
-}
-
-.campo input:focus,
-.campo select:focus,
-.campo textarea:focus {
-  border-color: var(--color-primario);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(42, 75, 155, 0.2);
-}
-
-.campo textarea {
-  min-height: 130px;
-  resize: vertical;
-}
-
-.campo--error input,
-.campo--error select,
-.campo--error textarea {
-  border-color: #b3261e;
-}
-
-.campo__error {
-  font-size: 0.8rem;
-  color: #b3261e;
-}
-
-.campo__error[hidden] {
-  display: none;
-}
-
-.campo--fila {
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.6rem;
-}
-
-.campo--fila input {
-  margin-top: 0.25rem;
-}
-
-.campo--fila label {
-  font-weight: var(--peso-liviano);
-  font-size: 0.9rem;
-}
-
-.formulario__aviso {
-  padding: 0.9rem 1.1rem;
-  border-radius: var(--radio-chico);
-  background: var(--color-primario-lavado);
-  color: var(--color-primario-oscuro);
-  font-size: 0.92rem;
-}
-
-.formulario__aviso[hidden] {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .campos-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.1rem;
-  }
-}
-
-/* montos de donación */
-.montos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.monto {
-  flex: 1 1 90px;
-  padding: 0.8rem 0.5rem;
-  border: 1px solid var(--color-linea);
-  border-radius: var(--radio-chico);
-  background: var(--color-fondo);
-  font-weight: var(--peso-medio);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.monto:hover {
-  border-color: var(--color-primario);
-}
-
-.monto[aria-pressed="true"] {
-  background: var(--color-primario);
-  border-color: var(--color-primario);
-  color: #fff;
 }
 
 /* ==========================================================================

@@ -104,14 +104,25 @@ export const COLUMNAS_PIE = [
 
 /**
  * Canales institucionales (documento del cliente, sección "Hablemos").
- * TODO: reemplazar las URL por las reales antes de publicar. Para WhatsApp,
- * el formato es https://wa.me/57XXXXXXXXXX (código de país sin "+").
+ * Los usan el pie y todos los botones con data-canal="..." de las páginas:
+ * cambiar un dato acá y correr `npm run layout` lo actualiza en todo el sitio.
  */
-export const CANALES = [
-  { nombre: 'Instagram', url: '#', icono: 'instagram' },
-  { nombre: 'WhatsApp', url: '#', icono: 'whatsapp' },
-  { nombre: 'Correo', url: 'mailto:contacto@fundacionredh.org', icono: 'correo' },
-];
+export const CANALES = {
+  instagram: {
+    nombre: 'Instagram',
+    url: '#', // TODO: https://www.instagram.com/<usuario>
+  },
+  whatsapp: {
+    nombre: 'WhatsApp',
+    // TODO: número en formato internacional, sólo dígitos: 57 + celular (ej. 573001234567)
+    numero: '',
+    mensajePorDefecto: 'Hola, quiero conocer más sobre Fundación REDH.',
+  },
+  correo: {
+    nombre: 'Correo',
+    url: 'mailto:contacto@fundacionredh.org', // TODO: confirmar la casilla
+  },
+};
 
 export const DATOS_INSTITUCIONALES = {
   nombre: 'Fundación REDH',

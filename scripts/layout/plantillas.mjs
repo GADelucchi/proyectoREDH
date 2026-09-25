@@ -14,6 +14,7 @@ import {
   CANALES,
   DATOS_INSTITUCIONALES,
 } from './navegacion.mjs';
+import { construirUrlCanal } from './canales.mjs';
 
 const ICONO_FLECHA = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
@@ -87,12 +88,20 @@ function renderBotonDestacado(pagina, enlazar) {
         </div>`;
 }
 
-function renderMarca(enlazar, { variante }) {
-  const archivoLogo =
-    variante === 'negativo' ? 'assets/imgs/logo-redh-horizontal-blanco.svg' : 'assets/imgs/logo-redh-horizontal.svg';
+/**
+ * Logo con enlace a Inicio. En el header va el logo principal del manual
+ * (la palabra REDH dentro de las formas); en el pie, la versión horizontal en
+ * blanco, porque el fondo es oscuro.
+ */
+const LOGOS = {
+  cabecera: { archivo: 'assets/imgs/logo-redh.svg', ancho: 192, alto: 192 },
+  pie: { archivo: 'assets/imgs/logo-redh-horizontal-blanco.svg', ancho: 227, alto: 67 },
+};
 
-  return `<a class="marca" href="${enlazar(PAGINAS.inicio.ruta)}">
-          <img class="marca__logo" src="${enlazar(archivoLogo)}" width="227" height="67"
+function renderMarca(enlazar, ubicacion) {
+  const logo = LOGOS[ubicacion];
+  return `<a class="marca marca--${ubicacion}" href="${enlazar(PAGINAS.inicio.ruta)}">
+          <img class="marca__logo" src="${enlazar(logo.archivo)}" width="${logo.ancho}" height="${logo.alto}"
             alt="${DATOS_INSTITUCIONALES.nombre} — Inicio">
         </a>`;
 }
@@ -107,7 +116,7 @@ export function renderCabecera(enlazar) {
 
   return `<header class="cabecera">
     <div class="contenedor cabecera__inner">
-      ${renderMarca(enlazar, { variante: 'positivo' })}
+      ${renderMarca(enlazar, 'cabecera')}
 
       <nav class="nav" id="nav" aria-label="Navegación principal">
         <ul class="nav__lista">
@@ -143,10 +152,12 @@ function renderColumnaPie(columna, enlazar) {
 }
 
 function renderCanales() {
-  return CANALES.map(
-    (canal) =>
-      `<a href="${canal.url}" aria-label="${canal.nombre} de ${DATOS_INSTITUCIONALES.nombre}">${ICONOS_CANALES[canal.icono]}</a>`
-  ).join('\n            ');
+  return Object.entries(CANALES)
+    .map(
+      ([idCanal, canal]) =>
+        `<a href="${construirUrlCanal(idCanal)}" aria-label="${canal.nombre} de ${DATOS_INSTITUCIONALES.nombre}">${ICONOS_CANALES[idCanal]}</a>`
+    )
+    .join('\n            ');
 }
 
 export function renderPie(enlazar) {
@@ -157,7 +168,7 @@ export function renderPie(enlazar) {
     <div class="contenedor">
       <div class="pie__grid">
         <div>
-          ${renderMarca(enlazar, { variante: 'negativo' })}
+          ${renderMarca(enlazar, 'pie')}
           <p class="pie__lema">${datos.lema}</p>
           <p class="pie__texto">${datos.descripcion}</p>
           <div class="redes">
