@@ -28,8 +28,12 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="../assets/imgs/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/imgs/apple-touch-icon.png">
+  <!-- Íconos. Al cambiarlos, renombrar los archivos: los navegadores guardan el
+       favicon en una caché propia y no lo vuelven a pedir si la URL es la misma. -->
+  <link rel="icon" href="../assets/imgs/favicon-redh.svg" type="image/svg+xml">
+  <!-- respaldo PNG para Safari anterior a la versión 26, que no muestra favicons SVG -->
+  <link rel="icon" href="../assets/imgs/favicon-redh-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/imgs/apple-touch-icon-redh.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
