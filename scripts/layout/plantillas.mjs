@@ -90,12 +90,14 @@ function renderBotonDestacado(pagina, enlazar) {
 
 /**
  * Logo con enlace a Inicio. En el header va el logo principal del manual
- * (la palabra REDH dentro de las formas); en el pie, la versión horizontal en
- * blanco, porque el fondo es oscuro.
+ * (la palabra REDH dentro de las formas); en el pie, la versión horizontal a
+ * color con el isotipo nuevo (la esfera de ondas), sobre fondo claro. Sólo
+ * existe en PNG: logo-redh-horizontal.svg es el isotipo anterior.
+ * TODO: reemplazar por el SVG cuando la fundación lo pase.
  */
 const LOGOS = {
   cabecera: { archivo: 'assets/imgs/logo-redh.svg', ancho: 192, alto: 192 },
-  pie: { archivo: 'assets/imgs/logo-redh-horizontal-blanco.svg', ancho: 227, alto: 67 },
+  pie: { archivo: 'assets/imgs/logo-redh-horizontal-esfera.png', ancho: 208, alto: 68 },
 };
 
 function renderMarca(enlazar, ubicacion) {
@@ -164,7 +166,7 @@ export function renderPie(enlazar) {
   const datos = DATOS_INSTITUCIONALES;
   const columnas = COLUMNAS_PIE.map((columna) => renderColumnaPie(columna, enlazar)).join('\n\n        ');
 
-  return `<footer class="pie superficie-oscura">
+  return `<footer class="pie">
     <div class="contenedor">
       <div class="pie__grid">
         <div>

@@ -137,7 +137,7 @@ marca (`archivos/manual inicial.pdf`):
 - **Naranja en los h2**: el manual pone los h2 en naranja, pero `#f9b03d` sobre
   blanco tiene un contraste de 1,9:1 y la WCAG pide 3:1 para texto grande. Por
   eso en fondos claros los h2 van en azul y el naranja se usa en las superficies
-  oscuras (`.superficie-oscura`: franja de llamada a la acción y pie), donde
+  oscuras (`.superficie-oscura`: franja de llamada a la acción), donde
   llega a 7,6:1 sobre azul noche y 4,8:1 sobre violeta.
 
 ### Cabecera y pie
@@ -258,7 +258,8 @@ elementos recortados y sin errores de JS en ninguna página.
 - [x] ~~Logo definitivo en vector y paleta de marca~~: aplicados desde el manual
 - [ ] Autorización para publicar las fotos donde aparecen niñas y niños (ver TODO en `esto-es-redh.html`)
 - [x] ~~Formularios sin destino~~: reemplazados por botones de WhatsApp
-- [ ] Número de WhatsApp en `CANALES.whatsapp.numero` (y Instagram)
+- [x] ~~Número de WhatsApp e Instagram~~: cargados en `CANALES` (`scripts/layout/navegacion.mjs`)
+- [ ] Llave Bre-B de la cuenta bancaria (ver TODO en `sumate.html#aportar`)
 - [ ] Pasarela de donaciones (la fundación evalúa Afrus). El botón "Quiero aportar" de Súmate hoy lleva a Hablemos
 - [ ] Definir si se usa analítica y, si sí, sumar el aviso de cookies
 - [ ] Página de política de privacidad (la referencian los formularios)

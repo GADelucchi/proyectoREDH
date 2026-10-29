@@ -110,12 +110,12 @@ export const COLUMNAS_PIE = [
 export const CANALES = {
   instagram: {
     nombre: 'Instagram',
-    url: '#', // TODO: https://www.instagram.com/<usuario>
+    url: 'https://www.instagram.com/fundacionredh',
   },
   whatsapp: {
     nombre: 'WhatsApp',
-    // TODO: número en formato internacional, sólo dígitos: 57 + celular (ej. 573001234567)
-    numero: '',
+    // formato internacional, sólo dígitos: 57 + celular
+    numero: '573337530766',
     mensajePorDefecto: 'Hola, quiero conocer más sobre Fundación REDH.',
   },
   correo: {
@@ -125,11 +125,11 @@ export const CANALES = {
 };
 
 export const DATOS_INSTITUCIONALES = {
-  nombre: 'Fundación REDH',
+  nombre: 'Red de Protección de Derechos',
   lema: 'Protección humanitaria',
   descripcion:
     'Trabajamos por la promoción y protección de los derechos humanos de niñas, niños, adolescentes y mujeres, en Bogotá y en distintos territorios de Colombia.',
   // TODO: NIT y datos de registro reales (Cámara de Comercio de Bogotá)
-  nit: '000.000.000-0',
+  nit: '901.415.080-1',
   ciudad: 'Bogotá D.C., Colombia',
 };

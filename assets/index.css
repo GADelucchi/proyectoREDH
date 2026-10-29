@@ -545,7 +545,8 @@ h1 + .bajada {
   height: 64px;
 }
 
-/* Pie: versión horizontal en blanco (proporción 3,37:1) */
+/* Pie: versión horizontal a color (proporción 3,06:1). El PNG mide 68 px de
+   alto: no agrandarlo más allá de eso o se ve borroso. */
 .marca--pie .marca__logo {
   height: 52px;
 }
@@ -1415,9 +1416,12 @@ h1 + .bajada {
    Pie de página
    ========================================================================== */
 
+/* Fondo claro: el logo a color lleva las letras en azul noche, el mismo tono
+   que usaba el pie, y sobre oscuro no se leían. */
 .pie {
-  background: var(--color-fondo-oscuro);
-  color: rgba(255, 255, 255, 0.78);
+  background: var(--color-fondo-alt);
+  color: var(--color-texto-suave);
+  border-top: 1px solid var(--color-linea);
   padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
 }
 
@@ -1427,7 +1431,7 @@ h1 + .bajada {
 }
 
 .pie a:hover {
-  color: #fff;
+  color: var(--color-primario);
   text-decoration: underline;
 }
 
@@ -1492,7 +1496,7 @@ h1 + .bajada {
   margin-top: 0.8rem;
   font-family: var(--fuente-titulo);
   font-size: 1.05rem;
-  color: var(--marca-naranja-80);
+  color: var(--color-secundario);
 }
 
 .pie__texto {
@@ -1512,12 +1516,13 @@ h1 + .bajada {
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-primario);
+  border: 1px solid var(--color-linea);
   border-radius: 50%;
 }
 
 .redes a:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-primario-lavado);
 }
 
 .redes svg {
@@ -1532,9 +1537,9 @@ h1 + .bajada {
   gap: 1rem;
   margin-top: 3rem;
   padding-top: 1.6rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--color-linea);
   font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--color-texto-suave);
 }
 
 /* ==========================================================================
